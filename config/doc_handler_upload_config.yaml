@@ -1,0 +1,29 @@
+#
+# COPYRIGHT Ericsson 2024
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+documents:
+  #  List the documents you want to upload to ADP Marketplace.
+  - name: "Service User Guide"
+    filepath: build/doc/html/service-users-guide.zip
+  - name: "Vulnerability Analysis Report"
+    external-link: "https://eridoc.internal.ericsson.com/eridoc/?docbase=eridoca&locateId=0b004cffcbd88791"
+    restricted: true
+  - name: "Secure Coding Report"
+    external-link: "https://eridoc.internal.ericsson.com/eridoc/?docbase=eridoca&locateId=0b004cffcbd88791"
+    restricted: true
+  - name: "Risk Assessment & Privacy Impact Assessment Report"
+    external-link: "https://eridoc.internal.ericsson.com/eridoc/?docbase=eridoca&locateId=0b004cffcbd88791"
+    restricted: true

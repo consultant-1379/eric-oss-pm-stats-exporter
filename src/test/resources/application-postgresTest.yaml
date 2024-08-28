@@ -1,0 +1,53 @@
+#
+# COPYRIGHT Ericsson 2022
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+# The spring.kafka properties (except spring.kafka.enabled) are only included to override the environment variable format,
+# which is not available during tests. Setting these variables to any value will not change the tests' behavior. If you want to modify the behaviour,
+# of the components that are using kafka, you should modify the properties in application-kafkaTest.yaml
+
+spring:
+  cloud.kubernetes.enabled: false
+  datasource:
+    url: jdbc:tc:postgresql:13.5-alpine:///databasename?TC_INITSCRIPT=file:src/test/resources/data.sql
+    username: postgres
+    driverClassName: org.testcontainers.jdbc.ContainerDatabaseDriver
+    password: mysecretpassword
+    hikari.connectionTimeout: 250
+
+datasource.enabled: true
+
+kafka.enabled: false
+
+retry:
+  kafka:
+    backoffPeriod: 500
+    maxAttempts: 5
+  topics:
+    backoffPeriod: 500
+    maxAttempts: 5
+  postgres:
+    backoffPeriod: 500
+    maxAttempts: 5
+  sr:
+    backoffPeriod: 500
+    maxAttempts: 5
+
+dc:
+  enabled: false
+
+meterCollectors:
+  enabled: false
+  retentionSeconds: 3600

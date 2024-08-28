@@ -1,0 +1,139 @@
+#
+# COPYRIGHT Ericsson 2024
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+modelVersion: "2.0"
+flavor: "ADP 2.0"
+service:
+  # name of the service:
+  name: "PM Stats Exporter"
+
+  # Design Country (set on the source products)
+  design_countries:
+    - HU                 # Hungary
+
+  # Compilation Country (Set on the derivative products)
+  sw_compilation_country: HU
+
+  # Release responsible
+  release_responsible: BCSDNMPDU
+
+  #  Design responsible
+  design_responsible: BCSDNMPDU
+
+  documents:
+    # Read documents revisions from this file
+    # Use munin-doc search to generate this file.
+    # Use full or relative path to product_structure.yaml
+    import: ../../build/documents.yaml                             # Part of Documentation side
+
+  # Details of the APR product structure:
+  top_product:
+    alias: ["eric-oss-pm-stats-exporter"]
+
+    # APR Product Number
+    number: APR 201 565
+
+    # Description
+    description: "Exports the results of the PM Stats calculation from the internal Postgres database of the PM Stats Calculator service to Kafka."
+
+    # Includes
+    includes:
+    
+        # PRI document
+      - eridoc: 109 21-APR 201 565/1
+        step_strategy: highest ordinal number
+
+        # Service User Guide
+      - eridoc: 1/1553-APR 201 565/1
+        step_strategy: highest revision letter
+
+        # Secure Coding Report
+      - eridoc: 1/0360-APR 201 565/1
+        step_strategy: highest revision letter
+
+        # Risk Assessment doc
+      - eridoc: 1/006 64-APR 201 565/1
+        step_strategy: highest revision letter
+
+        # Test Specification
+      - eridoc: 1/152 41-APR 201 565/1
+        step_strategy: highest revision letter
+
+        # Test Report
+      - eridoc: 1/152 83-APR 201 565/1
+        step_strategy: highest ordinal number
+
+        # Vulnerability Analysis Report
+      - eridoc: 1/1597-APR 201 565/1
+        step_strategy: highest revision letter
+
+        # Characteristic Report
+      - eridoc: 2/152 83-APR 201 565/1
+        step_strategy: highest ordinal number
+
+      # SUSE Licenses
+      - prim: 1/FAL 115 3215
+        rstate: R1A
+      - prim: 3/FAL 115 3215
+        rstate: R1A
+      - prim: 5/FAL 115 3215
+        rstate: R1A
+      - prim: 7/FAL 115 3215
+        rstate: R1A
+
+  # Details of the Source product structure
+  src_products:
+
+    # Source Code Product
+    - label: Source
+      number: CAV 101 0248
+
+  # Details of zero or more derivative product structures, use [] for zero
+  derivative_products:
+
+    # Label describing the product, must be unique per list item
+    - label: "HELM"
+      number: "CXD 101 286"
+      alias: ["eric-oss-pm-stats-exporter"]
+      derivedFrom:
+        munin: CAV 101 0248
+
+    - label: "IMAGE"
+      number: "CXU 101 1340"
+      description: "PM Stats Exporter Image"
+      includes:
+
+        # Common Base OS
+        - munin: CXC 201 2032
+          version: 6.14.0
+          secondPartyProduct: "True"
+
+        # Common Base OS Repo
+        - munin: CXC 201 2031
+          version: 6.14.0
+          secondPartyProduct: "True"
+
+        # Cots for schema-registry
+        - cots_file: cots.yaml
+
+      uses_foss:
+        - dependencies_file: ./../../generated/dependencies/dependencies-3pp.yaml
+        # - foss_usage: ./../fossa/foss.usage.yaml
+      # uses_encryption:
+      #- import: ./../fossa/encryptions.yaml     # ToDo: update when encryption is used
+
+      derivedFrom:
+        munin: CAV 101 0248

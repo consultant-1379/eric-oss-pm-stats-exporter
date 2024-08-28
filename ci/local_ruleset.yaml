@@ -1,0 +1,230 @@
+#
+# COPYRIGHT Ericsson 2024
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+modelVersion: 2.0
+
+description: "PM Stats Exporter service is in the PM Stats Calculation Handling app. It exports periodically the calculated KPIs by PM Stats Calculator onto Kafka."
+
+import:
+  common: ../common-properties.yaml
+  common-rules: common_ruleset2.0.yaml
+
+# See image catalog: https://confluence.lmera.ericsson.se/display/ACD/ADP+CICD+Docker+Image+Catalog
+docker-images:
+  - adp-asciidoc-builder: armdocker.rnd.ericsson.se/proj-adp-cicd-drop/bob-asciidocbuilder:${env.ASCII_DOC_BUILDER_TAG}
+  - adp-helm-dr-check: armdocker.rnd.ericsson.se/proj-adp-cicd-drop/common-library-adp-helm-dr-check:${env.HELM_DR_CHECK_TAG}
+  - adp-helm-kubectl: armdocker.rnd.ericsson.se/proj-adp-cicd-drop/bob-py3kubehelmbuilder:${env.HELM_KUBECTL_TAG}
+  - adp-maven-builder: armdocker.rnd.ericsson.se/proj-adp-cicd-drop/bob-java17mvnbuilder:${env.MVN_BUILDER_TAG}
+  - adp-release-auto: armdocker.rnd.ericsson.se/proj-adp-cicd-drop/bob-adp-release-auto:${env.RELEASE_AUTO_TAG}
+
+# List of constants
+properties:
+  # Marketplace Documentation Location
+  - doc-repo-base-path: https://arm.seli.gic.ericsson.se/artifactory
+  - doc-arm-dev-repo: ${doc-repo-base-path}/proj-eric-oss-dev-generic-local/${common.helm-chart-name}
+  - doc-arm-release-repo: ${doc-repo-base-path}/proj-eric-oss-released-generic-local/${common.helm-chart-name}
+  - exempt-helm-design-rules: "-DhelmDesignRule.config.eric-eo-usermgmt.DR-D1123-124=exempt -DhelmDesignRule.config.eric-eo-usermgmt.DR-D1123-125=exempt -DhelmDesignRule.config.DR-D1123-113=exempt -DhelmDesignRule.config.DR-D1125-026=disable -DhelmDesignRule.config.DR-D1125-027=disable -DhelmDesignRule.config.DR-D470223-010=disable -DhelmDesignRule.config.DR-D1125-029=disable"
+
+# import environment variables (For example: Jenkins parameters)
+env:
+  - HOME
+  - MAVEN_CLI_OPTS (default=-Duser.home=${env.HOME} -B)
+  - MAVEN_OPTS (default=-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn)
+  - PWD
+  - PROJ_MVN (default=/proj/mvn)
+  - ENABLE_MVN_TEST_OUTPUT (default=true)
+  - ENABLE_DR_CHECKER_SCREEN_OUTPUT (default=true)
+  - DOCKER_VOLUME_MAPPING_PASSWD (default=--volume ${env.HOME}/mypasswd:/etc/passwd:ro)
+
+  # Default docker image tags
+  - MVN_BUILDER_TAG (default=latest)
+  - HELM_DR_CHECK_TAG (default=latest)
+  - DOC_BUILDER_TAG (default=latest)
+  - HELM_KUBECTL_TAG (default=latest)
+  - RELEASE_AUTO_TAG (default=latest)
+
+  # ADP Marketplace
+  - ADP_PORTAL_API_KEY
+
+  # Kubernetes
+  - COLLECT_LOGS_SCRIPT_LOCATION (default="https://arm.sero.gic.ericsson.se/artifactory/proj-ADP_GS_Support_FTP-generic-local/collect_ADP_logs")
+  - ENABLE_HELM_V3 (default=true)
+  - K8S_NAMESPACE (default=${common.helm-chart-name}-${var.commithash})
+  - KUBECONFIG
+
+  # Credentials
+  - SELI_ARTIFACTORY_REPO_USER
+  - SELI_ARTIFACTORY_REPO_PASS
+
+# Variables, set by below tasks
+var:
+  - commithash
+  - commithash-full
+  - docker-config-basepath
+  - version
+  - pom-version
+  - dr-checker-screen-output
+  - mvn-test-output
+
+# Rules to execute
+rules:
+
+  lint:
+    - task: static-checking
+      docker-image: adp-maven-builder
+      docker-flags: &mvn-docker-flags
+      - "--volume /proj/mvn:/proj/mvn"
+      cmd: mvn ${env.MAVEN_CLI_OPTS} compile checkstyle:checkstyle -DskipTests=true
+    - task: dr-checker-screen-output
+      cmd:
+        if [[ ${env.ENABLE_DR_CHECKER_SCREEN_OUTPUT} != "true" ]]; then
+          echo ' > .bob/design-rule-check.log 2>&1' > .bob/var.dr-checker-screen-output;
+        else
+          echo "" > .bob/var.dr-checker-screen-output;
+        fi
+    - task: metrics-check
+      cmd:
+        - . ./ci/scripts/metrics-checker.sh --chmod=+x && checkValuesYAML ${common.helm-chart-name}
+        - . ./ci/scripts/metrics-checker.sh && checkServiceYAML ${common.helm-chart-name}
+        - . ./ci/scripts/metrics-checker.sh && checkDeploymentYAML ${common.helm-chart-name}
+        - . ./ci/scripts/metrics-checker.sh && checkHelperTPL ${common.helm-chart-name}
+        - . ./ci/scripts/metrics-checker.sh && checkPomXML ${common.helm-chart-name}
+        - . ./ci/scripts/metrics-checker.sh && passOrFailCheck
+    - task: helm-chart-check
+      docker-image: adp-helm-dr-check
+      cmd: helm-dr-check --helm-chart charts/${common.helm-chart-name} ${common-rules.enabled-helm-design-rules} ${exempt-helm-design-rules} --helm-v3 --output .bob/ ${var.dr-checker-screen-output}
+
+  # Generate documents: cpi sdifs and raml hml doc
+  generate-docs:
+    - task: markdown-to-pdf
+      docker-image: adp-release-auto
+      cmd: 'doc-handler generate --config config/docs_pdf_config.yaml
+                                     --output ./build/doc/pdf
+                                     --stylesheet doc/stylesheet/stylesheet.css
+                                     --format pdf'
+    # - task: asciidoc-to-sdif
+    #  docker-image: adp-asciidoc-builder
+    #  cmd: /adp_build_doc.sh --project-dir=${env.PWD} --build-dir=${env.PWD}/build
+    - task: prepare-for-marketplace
+      docker-image: adp-release-auto
+      cmd: 'doc-handler generate --config config/doc_handler_config.yaml
+                                       --output ./build/doc/html
+                                       --format html
+                                       --zip'
+
+  # Build java source code and package jar file, image building not needed at this stage
+  build:
+    - task: update-pom-version
+      cmd: sed -i '0,/${var.pom-version}/s//${var.version}/' pom.xml
+    - task: mvn-package
+      docker-image: adp-maven-builder
+      docker-flags: &mvn-docker-flags-with-creds
+      - "--env HOME=${env.HOME}"
+      - "--volume ${env.HOME}:${env.HOME}"
+      - "--env DOCKER_HOST=tcp://host.docker.internal:2375"
+      - "-v /var/run/docker.sock:/var/run/docker.sock"
+      - "--volume /proj/mvn:/proj/mvn"
+      cmd: mvn ${env.MAVEN_CLI_OPTS} clean install -DskipTests=true -Dcheckstyle.skip=true -Dcpd.skip=true -Dpmd.skip=true
+
+  # Run unit tests and jacoco coverage for SonarQube analysis
+  test:
+    - task: mvn-test-output
+      cmd:
+        if [[ ${env.ENABLE_MVN_TEST_OUTPUT} != "true" ]]; then
+        echo ' > .bob/mvn-test-output.log 2>&1' > .bob/var.mvn-test-output;
+        else
+        echo "" > .bob/var.mvn-test-output;
+        fi
+    - task: mvn-package
+      docker-image: adp-maven-builder
+      docker-in-docker: socket
+      docker-flags: *mvn-docker-flags-with-creds
+      cmd: mvn ${env.MAVEN_CLI_OPTS} clean install jacoco:prepare-agent -Dcheckstyle.skip=true -Dcpd.skip=true -Dpmd.skip=true ${var.mvn-test-output}
+
+  # Run unit, and integration tests, also create jacoco coverage file for SonarQube analysis
+  integration-test:
+    - task: mvn-test-output
+      cmd:
+        if [[ ${env.ENABLE_MVN_TEST_OUTPUT} != "true" ]]; then
+        echo ' > .bob/mvn-test-output.log 2>&1' > .bob/var.mvn-test-output;
+        else
+        echo "" > .bob/var.mvn-test-output;
+        fi
+    - task: mvn-verify
+      docker-image: adp-maven-builder
+      docker-in-docker: socket
+      docker-flags: *mvn-docker-flags-with-creds
+      cmd: mvn ${env.MAVEN_CLI_OPTS} clean install jacoco:prepare-agent -DskipTestIT=false ${var.mvn-test-output}
+
+  upload-mvn-jars:
+    - task: mvn-upload-internal
+      docker-image: adp-maven-builder
+      docker-flags: *mvn-docker-flags-with-creds
+      cmd: mvn ${env.MAVEN_CLI_OPTS} clean deploy -DskipTests=true -Dcheckstyle.skip=true -Dcpd.skip=true -Dpmd.skip=true
+
+  robustness-test:
+    - task: script-permissions
+      cmd: chmod +x ci/scripts/robustness-test.sh
+    - task: robustness-test
+      docker-image: adp-helm-kubectl
+      docker-flags: &docker_flags_kube_config
+        - "--env HOME=${env.HOME}"
+        - "--env K8S_NAMESPACE=${env.K8S_NAMESPACE}"
+        - "--env KUBECONFIG=${env.KUBECONFIG}"
+        - "--env ENABLE_HELM_V3"
+        - "--env COLLECT_LOGS_SCRIPT_LOCATION"
+        - "--volume ${env.PWD}:${env.PWD}"
+        - "--volume ${env.HOME}:${env.HOME}"
+        - "--volume ${env.KUBECONFIG}:${env.KUBECONFIG}"
+        - "--volume ${var.docker-config-basepath}:${var.docker-config-basepath}"
+      cmd: ci/scripts/robustness-test.sh
+
+  # Upload zip package documents to ARM and refresh adp portal
+  marketplace-upload-dev:
+    - task: upload-doc-to-arm
+      docker-image: adp-release-auto
+      cmd: marketplace upload --arm-api-token ${env.SELI_ARTIFACTORY_REPO_PASS}
+        --arm-url ${doc-arm-dev-repo}
+        --config config/doc_handler_upload_config.yaml
+        --dev
+        --debug
+        --refresh
+        --portal-token ${env.ADP_PORTAL_API_KEY}
+
+  marketplace-upload-release:
+    - task: upload-doc-to-arm
+      docker-image: adp-release-auto
+      cmd: marketplace upload --arm-api-token ${env.SELI_ARTIFACTORY_REPO_PASS}
+        --arm-url ${doc-arm-release-repo}
+        --config config/doc_handler_upload_config.yaml
+        --version ${var.version}
+        --debug
+        --refresh
+        --portal-token ${env.ADP_PORTAL_API_KEY}
+
+  publish-jars:
+    - task: mvn-upload
+      docker-image: adp-maven-builder
+      docker-flags:
+        - ${env.DOCKER_VOLUME_MAPPING_PASSWD}
+        - "--volume ${env.HOME}:${env.HOME}"
+        - "--volume ${env.PROJ_MVN}:/proj/mvn"
+        - "--env SELI_ARTIFACTORY_REPO_USER=${env.SELI_ARTIFACTORY_REPO_USER}"
+        - "--env SELI_ARTIFACTORY_REPO_PASS=${env.SELI_ARTIFACTORY_REPO_PASS}"
+        - "--env MAVEN_OPTS"
+      cmd:
+        - git stash && git checkout master
+        - mvn ${env.MAVEN_CLI_OPTS} -Dmaven.javadoc.skip=true -DskipTests=true -DskipTestIT clean deploy

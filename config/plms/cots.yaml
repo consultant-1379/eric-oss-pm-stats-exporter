@@ -1,0 +1,10 @@
+cots:
+- prim: 1/CTX1010582
+  rstate: R1A
+  swName: schema-registry, Non-FOSS
+  swVersion: 7.4.0
+  vendor: confluentinc
+  cotsUsage:
+    cotsLicenses:
+    - 1/FAL1153335
+    agreementNumber: Free Commercial / Non-FOSS freeware

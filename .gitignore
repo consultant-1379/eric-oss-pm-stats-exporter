@@ -1,0 +1,48 @@
+HELP.md
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+*.txt
+!ci/local_pipeline_env.txt
+!fossa/local_dep_tree.txt
+*.log
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### VS Code ###
+.vscode/
+
+### BOB Temporary Files/Folders ###
+.bob.env
+.bob/
+.bob*/
+k8s-logs/
+build
+
+### Test results ###
+test-output/
+
+### SonarQube Working Directory ###
+?/
+
+### Spinnaker Temporary Properties ###
+artifact.properties
+
+### REST2HTML Artifacts ###
+rest2html*.zip
+rest_conversion_log.txt
+**/*.zip
+
+### Temporary file, fetched for FOSSA manual steps ###
+fossa-report.json
+
+### Exporter specific ###
+eric-oss-pm-stats-exporter-args
+eric-oss-pm-stats-exporter-cluster-args
+
+### ignore CI-Jenkinsfiles
+ci/common_precodereview.Jenkinsfile
+ci/common_ruleset2.0.yaml

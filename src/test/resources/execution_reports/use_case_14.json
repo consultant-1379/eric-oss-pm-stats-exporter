@@ -1,0 +1,73 @@
+//Use Case 14
+//GIVEN
+//
+//Exporter running
+//Dependant services are available
+//
+//WHEN
+//
+//ExecutionReport received
+//ExecutionReport contains an update about scheduled KPIs
+//Common reliability threshold is higher with one aggr. per.
+//A KPI is deleted
+//A KPI becomes non-exportable
+//
+//THEN
+//
+//The related rows should be exported to scheduled topic
+//All KPIs should be exported with exportable=true
+//No KPIs should be exported with exportable=false
+//The two mentioned KPI's should disappear
+
+{
+  "execution_id": "b3ea0e28-6eca-4003-9cb6-77c85c78288a",
+  "scheduled": true,
+  "execution_start": 1667260740,    // 2022-10-31 23:59:00
+  "execution_end": 1667260799,      // 2022-10-31 23:59:59
+  "execution_group": "pm-stats-calc-handling",
+  "tables": [
+    {
+      "name": "kpi_cell_sector_60",
+      "aggregation_period": 60,
+      "list_of_dimensions": ["aggregation_begin_time", "agg_column_1", "agg_column_2", "agg_column_3"],
+      "list_of_kpis": ["sum_integer_join1", "sum_float_join1", "sum_integer_join2", "sum_integer_join3", "sum_float_join3"],
+      "kpis": [
+        {
+          "name": "sum_integer_join1",
+          "reexport_late_data": false,
+          "calculation_start_time": 1641949200,    // 2022-01-12 01:00:00
+          "exportable": true,
+          "reliability_threshold": 1641949200      // 2022-01-12 01:00:00
+        },
+        {
+          "name": "sum_float_join1",
+          "reexport_late_data": true,
+          "calculation_start_time": 1641949200,    // 2022-01-12 01:00:00
+          "exportable": true,
+          "reliability_threshold": 1641949200      // 2022-01-12 01:00:00
+        },
+        {
+          "name": "sum_integer_join2",
+          "reexport_late_data": true,
+          "calculation_start_time": 1641949200,    // 2022-01-12 01:00:00
+          "exportable": false,
+          "reliability_threshold": 1641949200      // 2022-01-12 01:00:00
+        },
+        {
+          "name": "sum_integer_join3",
+          "reexport_late_data": false,
+          "calculation_start_time": 1641952800,    // 2022-01-12 02:00:00
+          "exportable": false,
+          "reliability_threshold": 1641952800      // 2022-01-12 02:00:00
+        },
+        {
+          "name": "sum_float_join3",
+          "reexport_late_data": true,
+          "calculation_start_time": 1641952800,    // 2022-01-12 02:00:00
+          "exportable": false,
+          "reliability_threshold": 1641952800      // 2022-01-12 02:00:00
+        }
+      ]
+    }
+  ]
+}

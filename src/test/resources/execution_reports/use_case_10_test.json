@@ -1,0 +1,40 @@
+//Use Case 10
+//GIVEN
+//
+//Exporter running
+//Dependant services are available
+//
+//WHEN
+//
+//ExecutionReport received
+//ExecutionReport contains an update about scheduled KPIs
+//Late data received for non exportable KPI's
+//
+//THEN
+//
+//Nothing should be on either of the output topics
+
+{
+  "execution_id": "b3ea0e28-6eca-4003-9cb6-77c85c78288a",
+  "scheduled": true,
+  "execution_start": 1667260740,    // 2022-10-31 23:59:00
+  "execution_end": 1667260799,      // 2022-10-31 23:59:59
+  "execution_group": "pm-stats-calc-handling",
+  "tables": [
+    {
+      "name": "kpi_cell_sector_60",
+      "aggregation_period": 60,
+      "list_of_dimensions": ["aggregation_begin_time", "agg_column_1", "agg_column_2", "agg_column_3"],
+      "list_of_kpis": ["sum_integer_join1", "sum_float_join1", "sum_integer_join2", "sum_float_join2", "sum_integer_join3", "sum_float_join3"],
+      "kpis": [
+        {
+          "name": "sum_float_join3",
+          "reexport_late_data": true,
+          "calculation_start_time": 1641945600,    // 2022-01-12 00:00:00
+          "exportable": false,
+          "reliability_threshold": 1641956400      // 2022-01-12 03:00:00
+        }
+      ]
+    }
+  ]
+}

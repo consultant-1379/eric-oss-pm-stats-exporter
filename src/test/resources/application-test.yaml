@@ -1,0 +1,50 @@
+#
+# COPYRIGHT Ericsson 2022
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+# The kafka (except kafka.enabled) and spring.datasource (except datasource.enabled) properties  are
+# only included to override the environment variable format, which is not available during tests. Setting these variables
+# to any value will not change the tests' behavior. If you want to modify the behaviour, of the components that are using
+# kafka and postgreSQL, you should modify the properties in application-kafkaTest.yaml
+# or components that using only postgreSQL you should modify application-postgresTest.yaml.
+
+spring:
+  autoconfigure.exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  cloud.kubernetes.enabled: false
+
+datasource.enabled: false
+
+kafka.enabled: false
+
+retry:
+  kafka:
+    backoffPeriod: 500
+    maxAttempts: 5
+  topics:
+    backoffPeriod: 500
+    maxAttempts: 5
+  postgres:
+    backoffPeriod: 500
+    maxAttempts: 5
+  sr:
+    backoffPeriod: 500
+    maxAttempts: 5
+
+dc:
+  enabled: false
+
+meterCollectors:
+  enabled: true
+  retentionSeconds: 3600

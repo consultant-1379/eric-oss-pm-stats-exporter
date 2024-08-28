@@ -1,0 +1,218 @@
+[
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue1",
+    "agg_column_2": "dimValue1",
+    "agg_column_3": "dimValue1",
+    "sum_integer_join1": 72,
+    "sum_float_join1": 275.5
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue1",
+    "agg_column_2": "dimValue1",
+    "agg_column_3": "dimValue2",
+    "sum_integer_join1": -73,
+    "sum_float_join1": 4.1
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue1",
+    "agg_column_2": "dimValue1",
+    "agg_column_3": "dimValue3",
+    "sum_integer_join1": -9,
+    "sum_float_join1": -8.034
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue1",
+    "agg_column_2": "dimValue2",
+    "agg_column_3": "dimValue1",
+    "sum_integer_join1": 0,
+    "sum_float_join1": 0.1
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue1",
+    "agg_column_2": "dimValue2",
+    "agg_column_3": "dimValue2",
+    "sum_integer_join1": 8,
+    "sum_float_join1": -738.0
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue1",
+    "agg_column_2": "dimValue2",
+    "agg_column_3": "dimValue3",
+    "sum_integer_join1": 70,
+    "sum_float_join1": 793.923
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue1",
+    "agg_column_2": "dimValue3",
+    "agg_column_3": "dimValue1",
+    "sum_integer_join1": -73,
+    "sum_float_join1": -717.93
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue1",
+    "agg_column_2": "dimValue3",
+    "agg_column_3": "dimValue2",
+    "sum_integer_join1": 69,
+    "sum_float_join1": 3.2
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue1",
+    "agg_column_2": "dimValue3",
+    "agg_column_3": "dimValue3",
+    "sum_integer_join1": -12,
+    "sum_float_join1": 392.652
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue2",
+    "agg_column_2": "dimValue1",
+    "agg_column_3": "dimValue1",
+    "sum_integer_join1": 19,
+    "sum_float_join1": -12.475
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue2",
+    "agg_column_2": "dimValue1",
+    "agg_column_3": "dimValue2",
+    "sum_integer_join1": -332,
+    "sum_float_join1": 243.457
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue2",
+    "agg_column_2": "dimValue1",
+    "agg_column_3": "dimValue3",
+    "sum_integer_join1": -58,
+    "sum_float_join1": -569.8
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue2",
+    "agg_column_2": "dimValue2",
+    "agg_column_3": "dimValue1",
+    "sum_integer_join1": 969,
+    "sum_float_join1": 411.171
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue2",
+    "agg_column_2": "dimValue2",
+    "agg_column_3": "dimValue2",
+    "sum_integer_join1": 0,
+    "sum_float_join1": 15.1
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue2",
+    "agg_column_2": "dimValue2",
+    "agg_column_3": "dimValue3",
+    "sum_integer_join1": 2,
+    "sum_float_join1": 72.8
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue2",
+    "agg_column_2": "dimValue3",
+    "agg_column_3": "dimValue1",
+    "sum_integer_join1": 4,
+    "sum_float_join1": 9.239
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue2",
+    "agg_column_2": "dimValue3",
+    "agg_column_3": "dimValue2",
+    "sum_integer_join1": 8,
+    "sum_float_join1": 2.2
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue2",
+    "agg_column_2": "dimValue3",
+    "agg_column_3": "dimValue3",
+    "sum_integer_join1": -8,
+    "sum_float_join1": -30.97
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue3",
+    "agg_column_2": "dimValue1",
+    "agg_column_3": "dimValue1",
+    "sum_integer_join1": 1,
+    "sum_float_join1": 3.5
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue3",
+    "agg_column_2": "dimValue1",
+    "agg_column_3": "dimValue2",
+    "sum_integer_join1": -7,
+    "sum_float_join1": 7.3
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue3",
+    "agg_column_2": "dimValue1",
+    "agg_column_3": "dimValue3",
+    "sum_integer_join1": 888,
+    "sum_float_join1": 875.57
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue3",
+    "agg_column_2": "dimValue2",
+    "agg_column_3": "dimValue1",
+    "sum_integer_join1": -98,
+    "sum_float_join1": -4.477
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue3",
+    "agg_column_2": "dimValue2",
+    "agg_column_3": "dimValue2",
+    "sum_integer_join1": 907,
+    "sum_float_join1": -800.2
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue3",
+    "agg_column_2": "dimValue2",
+    "agg_column_3": "dimValue3",
+    "sum_integer_join1": 1,
+    "sum_float_join1": 836.715
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue3",
+    "agg_column_2": "dimValue3",
+    "agg_column_3": "dimValue1",
+    "sum_integer_join1": -803,
+    "sum_float_join1": 756.435
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue3",
+    "agg_column_2": "dimValue3",
+    "agg_column_3": "dimValue2",
+    "sum_integer_join1": -57,
+    "sum_float_join1": -57.69
+  },
+  {
+    "aggregation_begin_time": "1641945600",    // 2022-01-12 00:00:00
+    "agg_column_1": "dimValue3",
+    "agg_column_2": "dimValue3",
+    "agg_column_3": "dimValue3",
+    "sum_integer_join1": -636,
+    "sum_float_join1": 74.8
+  }
+]

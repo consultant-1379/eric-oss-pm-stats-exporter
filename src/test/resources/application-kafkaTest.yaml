@@ -1,0 +1,90 @@
+#
+# COPYRIGHT Ericsson 2024
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+spring:
+  main.allow-bean-definition-overriding: true
+  cloud.kubernetes.enabled: false
+  datasource:
+    url: jdbc:tc:postgresql:13.5-alpine:///databasename?TC_INITSCRIPT=file:src/test/resources/data.sql
+    username: postgres
+    driverClassName: org.testcontainers.jdbc.ContainerDatabaseDriver
+    password: mysecretpassword
+    hikari.connectionTimeout: 250
+
+datasource.enabled: true
+
+kafka:
+  enabled: true
+  bootstrap-servers: ${spring.embedded.kafka.brokers}
+  properties:
+    schema.registry.url: "mock://testurl"
+    auto.register.schemas: false
+    use.latest.version: true
+    avro:
+      fail.invalid.schema: true
+      oneof.for.nullables: false
+      write.dates.iso8601: true
+  consumer.auto-offset-reset: earliest
+  producer:
+    avro:
+      transactional.manager: "kafkaTransactionManagerTest"
+      transaction-id-prefix: tx-
+      linger.ms: 0
+      batch.size: 16384
+      compression.type: none
+  topics:
+    backup:
+      topic-name: pm-stats-exporter-json-backup-test
+      partitions: 1
+      replication-factor: 1
+      group-id: pm-stats-exporter-backup-test-group
+    completed-timestamp:
+      topic-name: pm-stats-exporter-json-completed-timestamp-test
+      partitions: 1
+      replication-factor: 1
+      group-id: pm-stats-exporter-completed-ts-test-group
+    scheduled:
+      topic-name: scheduled-test
+      partitions: 1
+      replication-factor: 1
+    on-demand:
+      topic-name: on-demand-test
+      partitions: 1
+      replication-factor: 1
+    execution-report:
+      topic-name: pm-stats-exporter-json-execution-report-test
+      group-id: pm-stats-exporter-execution-report-test-group
+
+retry:
+  kafka:
+    backoffPeriod: 500
+    maxAttempts: 5
+  topics:
+    backoffPeriod: 500
+    maxAttempts: 5
+  postgres:
+    backoffPeriod: 500
+    maxAttempts: 5
+  sr:
+    backoffPeriod: 100
+    maxAttempts: 1
+
+dc:
+  enabled: false
+
+meterCollectors:
+  enabled: true
+  retentionSeconds: 3600

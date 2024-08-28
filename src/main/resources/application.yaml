@@ -1,0 +1,159 @@
+#
+# COPYRIGHT Ericsson 2024
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+#Metrics related configurations
+management:
+  endpoint:
+    metrics.enabled: "true"
+    prometheus.enabled: "true"
+    health:
+      show-details: "always"
+      show-components: "always"
+  endpoints:
+    web.exposure.include: "info,health,metrics,env,prometheus"
+  metrics:
+    enable.jvm: "true"
+  web:
+    server.auto-time-requests: "true"
+  info.env.enabled: "true"
+  prometheus.metrics.export.enabled: "true"
+
+#opentracing.jaeger.enabled: "true"
+
+spring:
+  autoconfigure.exclude: ${POSTGRES_CONFIG}
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${POSTGRES_HOSTNAME}:${POSTGRES_PORT}/${POSTGRES_DATABASE}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    hikari:
+      connectionTimeout: 300000 #The application will wait 5 min before throwing a Connection exception
+      maximum-pool-size: 5
+      max-lifetime: 300000
+  jpa.properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+  cloud.kubernetes.leader.config-map-name: ${KUBERNETES_LEADER_CONFIG_MAP_NAME}
+
+datasource:
+  enabled: ${POSTGRES_ENABLED}
+
+kafka:
+  enabled: ${KAFKA_ENABLED}
+  bootstrap-servers: ${BROKER_ADDRESS}:${BROKER_PORT}
+  enable.auto.commit: false
+  properties.schema.registry.url: ${SCHEMA_REGISTRY_URL}
+  producer:
+    avro:
+      transaction-id-prefix: tx-
+      linger.ms: ${AVRO_PRODUCER_LINGER_MS}
+      batch.size: ${AVRO_PRODUCER_BATCH_SIZE}
+      compression.type: ${AVRO_PRODUCER_COMPRESSION_TYPE}
+    innerState:
+      transactional.id: innerStateTransactionalID
+  topics:
+    backup:
+      topic-name: ${BACKUP_TOPIC_NAME}
+      partitions: ${BACKUP_TOPIC_PARTITIONS}
+      replication-factor: ${BACKUP_TOPIC_REPLICATION_FACTOR}
+      group-id: ${BACKUP_TOPIC_NAME}-group
+    completed-timestamp:
+      topic-name: ${COMPLETED_TIMESTAMP_TOPIC_NAME}
+      partitions: ${COMPLETED_TIMESTAMP_TOPIC_PARTITIONS}
+      replication-factor: ${COMPLETED_TIMESTAMP_TOPIC_REPLICATION_FACTOR}
+      group-id: ${COMPLETED_TIMESTAMP_TOPIC_NAME}-group
+    scheduled:
+      topic-name: ${SCHEDULED_TOPIC_NAME}
+      partitions: ${SCHEDULED_TOPIC_PARTITIONS}
+      replication-factor: ${SCHEDULED_TOPIC_REPLICATION_FACTOR}
+    on-demand:
+      topic-name: ${ON_DEMAND_TOPIC_NAME}
+      partitions: ${ON_DEMAND_TOPIC_PARTITIONS}
+      replication-factor: ${ON_DEMAND_TOPIC_REPLICATION_FACTOR}
+    execution-report:
+      topic-name: ${EXECUTION_REPORT_TOPIC_NAME}
+      group-id: ${EXECUTION_REPORT_TOPIC_NAME}-group
+
+retry:
+  kafka:
+    backoffPeriod: ${KAFKA_RETRY_BACKOFF_PERIOD}
+    maxAttempts: ${KAFKA_MAX_RETRY_ATTEMPTS}
+  topics:
+    backoffPeriod: ${TOPICS_RETRY_BACKOFF_PERIOD}
+    maxAttempts: ${TOPICS_MAX_RETRY_ATTEMPTS}
+  postgres:
+    backoffPeriod: ${POSTGRES_RETRY_BACKOFF_PERIOD}
+    maxAttempts: ${POSTGRES_MAX_RETRY_ATTEMPTS}
+  sr:
+    backoffPeriod: ${SR_RETRY_BACKOFF_PERIOD}
+    maxAttempts: ${SR_MAX_RETRY_ATTEMPTS}
+
+dc:
+  enabled: ${DC_ENABLED}
+  url: ${DC_ADDRESS}
+  name-space: ${NAMESPACE}
+  kafka-name: ${BROKER_ADDRESS}
+
+endpoints.health.sensitive: "false"
+
+meterCollectors:
+  enabled: ${METERCOLLECTORS_ENABLED}
+  retentionSeconds: ${METERCOLLECTORS_RETENTION_SECONDS}
+
+info:
+  app:
+    name: '@name@'
+    description: Pm Stats Exporter
+    version: '@version@'
+    legal: "COPYRIGHT Ericsson 2022 -
+ The copyright to the computer program(s) herein is the property of
+ Ericsson Inc. The programs may be used and/or copied only with written
+ permission from Ericsson Inc. or in accordance with the terms and
+ conditions stipulated in the agreement/contract under which the
+ program(s) have been supplied."
+
+logging:
+  level:
+    org.springframework.cloud.kubernetes.fabric8.leader: ERROR
+    org.apache.kafka:
+      common:
+        metrics: WARN
+        utils: WARN
+      clients.admin: WARN
+  config: ${LOGBACK_CONFIG_FILE:classpath:logback-json.xml}
+# Format for endpoints is a sequence with ',' as a delimiter
+  endpoints:
+    exclude: /actuator/health, /actuator/prometheus, /ping, /metrics, /actuator/id-(.*)
+
+#Set the stubrunner credentials:
+#stubrunner.username: <LAN SIGNUM ID>
+#stubrunner.password: <LAN encripted PWD or JFrog API Key>
+stubrunner:
+  username: ${SELI_ARTIFACTORY_REPO_USER}
+  password: ${SELI_ARTIFACTORY_REPO_PASS}
+
+#Tracing properties
+management.tracing.propagation.produce: ${ERIC_PROPAGATOR_PRODUCE:[B3]}
+otel.exporter.otlp.traces.protocol: ${OTEL_EXPORTER_OTLP_TRACES_PROTOCOL:grpc}
+
+ericsson:
+  tracing:
+    enabled: ${ERIC_TRACING_ENABLED:true}
+    exporter:
+      endpoint: ${ERIC_EXPORTER_ENDPOINT:http://eric-dst-collector:4317}
+      protocol: ${ERIC_EXPORTER_PROTOCOL:grpc}
+    sampler:
+      jaeger_remote:
+        endpoint: ${ERIC_SAMPLER_JAEGER_REMOTE_ENDPOINT:http://eric-dst-collector:14250}

@@ -1,0 +1,1253 @@
+#
+# COPYRIGHT Ericsson 2024
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+modelVersion: '3.0'
+dependencies:
+- ID: aopalliance:aopalliance+1.0
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - FAL 115 9993
+- ID: ch.qos.logback:logback-classic+1.4.14
+  mimer:
+    linking: Classpath
+    primary: 'False'
+    selected_licenses:
+    - LGPL-2.1-only
+- ID: ch.qos.logback:logback-core+1.4.14
+  mimer:
+    linking: Classpath
+    primary: 'False'
+    selected_licenses:
+    - LGPL-2.1-only
+- ID: com.fasterxml.jackson.core:jackson-annotations+2.15.4
+  mimer:
+    linking: Classpath
+- ID: com.fasterxml.jackson.core:jackson-core+2.15.4
+  mimer:
+    linking: Classpath
+- ID: com.fasterxml.jackson.core:jackson-databind+2.15.4
+  mimer:
+    linking: Classpath
+- ID: com.fasterxml.jackson.dataformat:jackson-dataformat-yaml+2.15.4
+  mimer:
+    linking: Classpath
+    primary: 'False'
+- ID: com.fasterxml.jackson.datatype:jackson-datatype-jdk8+2.15.4
+  mimer:
+    linking: Classpath
+- ID: com.fasterxml.jackson.datatype:jackson-datatype-jsr310+2.15.4
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: com.fasterxml.jackson.module:jackson-module-jakarta-xmlbind-annotations+2.15.4
+  mimer:
+    linking: Classpath
+- ID: com.fasterxml.jackson.module:jackson-module-parameter-names+2.15.4
+  mimer:
+    linking: Classpath
+- ID: com.fasterxml:classmate+1.6.0
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: com.github.luben:zstd-jni+1.5.5-1
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    usage: Not affected by copyleft, because it is a non-primary dependency. The related primary dependency (org.springframework.kafka:spring-kafka) has Apache-2.0 license.
+- ID: com.google.code.gson:gson+2.9.1
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    obligation: 'This license has an express patent license.
+      You are required to limit the liability of others (beyond reproducing a license that contains a limitation of liability).
+      This license has a patent retaliation clause.
+      There are (or You intend to place) additional restrictions.
+      You are expressly forbidden from using the name of the author(s) or distributor(s) to promote or advertise the software.
+      You are required to disclaim warranties on behalf of others.
+      You are required to include a copy of the license in distributions that you make.
+      You are required to indemnify the original author(s) against claims arising from your use or distribution.
+      You are required to make notes of changes You made.
+      Specific instructions for handling modifications: You must cause any modified files to carry promine(...)
+      You must cause any modified files to carry prominent notices stating that you changed the files.'
+    primary: 'True'
+    usage: A Java serialization/deserialization library to convert Java Objects into JSON and back.
+- ID: com.squareup.okhttp3:logging-interceptor+4.12.0
+  mimer:
+    linking: Classpath
+- ID: com.squareup.okhttp3:okhttp+4.12.0
+  mimer:
+    linking: Classpath
+- ID: com.squareup.okio:okio+3.6.0
+  mimer:
+    linking: Classpath
+- ID: com.squareup.okio:okio-jvm+3.6.0
+  mimer:
+    linking: Classpath
+- ID: com.sun.istack:istack-commons-runtime+4.1.2
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - BSD-3-Clause
+- ID: com.zaxxer:HikariCP+5.0.1
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    usage: Not affected by copyleft, because no GPL license software component is shipped to customer.
+- ID: io.fabric8:kubernetes-client+6.9.2
+  mimer:
+    linking: Classpath
+- ID: io.fabric8:kubernetes-client-api+6.9.2
+  mimer:
+    linking: Classpath
+- ID: io.fabric8:kubernetes-httpclient-okhttp+6.9.2
+  mimer:
+    linking: Classpath
+- ID: io.fabric8:kubernetes-model-admissionregistration+6.9.2
+  bazaar:
+    prim: 69/CTX1022189
+    stako: ESW2
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    product_number: CTX1022189
+    selected_licenses:
+    - Apache-2.0
+- ID: io.fabric8:kubernetes-model-apiextensions+6.9.2
+  mimer:
+    linking: Classpath
+- ID: io.fabric8:kubernetes-model-apps+6.9.2
+  mimer:
+    linking: Classpath
+- ID: io.fabric8:kubernetes-model-autoscaling+6.9.2
+  mimer:
+    linking: Classpath
+- ID: io.fabric8:kubernetes-model-batch+6.9.2
+  mimer:
+    linking: Classpath
+- ID: io.fabric8:kubernetes-model-certificates+6.9.2
+  mimer:
+    linking: Classpath
+- ID: io.fabric8:kubernetes-model-common+6.9.2
+  mimer:
+    linking: Classpath
+- ID: io.fabric8:kubernetes-model-coordination+6.9.2
+  mimer:
+    linking: Classpath
+- ID: io.fabric8:kubernetes-model-core+6.9.2
+  mimer:
+    linking: Classpath
+- ID: io.fabric8:kubernetes-model-discovery+6.9.2
+  mimer:
+    linking: Classpath
+- ID: io.fabric8:kubernetes-model-events+6.9.2
+  mimer:
+    linking: Classpath
+- ID: io.fabric8:kubernetes-model-extensions+6.9.2
+  mimer:
+    linking: Classpath
+- ID: io.fabric8:kubernetes-model-flowcontrol+6.9.2
+  mimer:
+    linking: Classpath
+- ID: io.fabric8:kubernetes-model-gatewayapi+6.9.2
+  bazaar:
+    prim: 69/CTX1022189
+    stako: ESW2
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    product_number: CTX1022189
+    selected_licenses:
+    - Apache-2.0
+- ID: io.fabric8:kubernetes-model-metrics+6.9.2
+  mimer:
+    linking: Classpath
+- ID: io.fabric8:kubernetes-model-networking+6.9.2
+  mimer:
+    linking: Classpath
+- ID: io.fabric8:kubernetes-model-node+6.9.2
+  mimer:
+    linking: Classpath
+- ID: io.fabric8:kubernetes-model-policy+6.9.2
+  mimer:
+    linking: Classpath
+- ID: io.fabric8:kubernetes-model-rbac+6.9.2
+  mimer:
+    linking: Classpath
+- ID: io.fabric8:kubernetes-model-resource+6.9.2
+  mimer:
+    linking: Classpath
+- ID: io.fabric8:kubernetes-model-scheduling+6.9.2
+  mimer:
+    linking: Classpath
+- ID: io.fabric8:kubernetes-model-storageclass+6.9.2
+  bazaar:
+    prim: 69/CTX1022189
+    stako: ESW2
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    product_number: CTX1022189
+    selected_licenses:
+    - Apache-2.0
+- ID: io.micrometer:context-propagation+1.1.1
+  mimer:
+    linking: Classpath
+- ID: io.micrometer:micrometer-commons+1.12.3
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: io.micrometer:micrometer-core+1.12.3
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    obligation: 'This license has an express patent license.
+      You are required to limit the liability of others (beyond reproducing a license that contains a limitation of liability).
+      This license has a patent retaliation clause.
+      There are (or You intend to place) additional restrictions.
+      You are expressly forbidden from using the name of the author(s) or distributor(s) to promote or advertise the software.
+      You are required to disclaim warranties on behalf of others.
+      You are required to include a copy of the license in distributions that you make.
+      You are required to indemnify the original author(s) against claims arising from your use or distribution.
+      You are required to make notes of changes You made.
+      Specific instructions for handling modifications: You must cause any modified files to carry promine(...)
+      You must cause any modified files to carry prominent notices stating that you changed the files.'
+    usage: An application metrics facade for the most popular monitoring tools. Instrument your code with dimensional metrics with a vendor neutral interface and decide on the monitoring backend at the last minute.
+- ID: io.micrometer:micrometer-jakarta9+1.12.3
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: io.micrometer:micrometer-observation+1.12.3
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: io.micrometer:micrometer-registry-prometheus+1.12.3
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    obligation: 'This license has an express patent license.
+      You are required to limit the liability of others (beyond reproducing a license that contains a limitation of liability).
+      This license has a patent retaliation clause.
+      There are (or You intend to place) additional restrictions.
+      You are expressly forbidden from using the name of the author(s) or distributor(s) to promote or advertise the software.
+      You are required to disclaim warranties on behalf of others.
+      You are required to include a copy of the license in distributions that you make.
+      You are required to indemnify the original author(s) against claims arising from your use or distribution.
+      You are required to make notes of changes You made.
+      Specific instructions for handling modifications: You must cause any modified files to carry promine(...)
+      You must cause any modified files to carry prominent notices stating that you changed the files.'
+    usage: An application metrics facade for the most popular monitoring tools. Instrument your code with dimensional metrics with a vendor neutral interface and decide on the monitoring backend at the last minute.
+- ID: io.micrometer:micrometer-tracing+1.2.3
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: io.micrometer:micrometer-tracing-bridge-otel+1.2.3
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    obligation: 'This license has an express patent license.
+      You are required to limit the liability of others (beyond reproducing a license that contains a limitation of liability).
+      This license has a patent retaliation clause.
+      There are (or You intend to place) additional restrictions.
+      You are expressly forbidden from using the name of the author(s) or distributor(s) to promote or advertise the software.
+      You are required to disclaim warranties on behalf of others.
+      You are required to include a copy of the license in distributions that you make.
+      You are required to indemnify the original author(s) against claims arising from your use or distribution.
+      You are required to make notes of changes You made.
+      Specific instructions for handling modifications: You must cause any modified files to carry promine(...)
+      You must cause any modified files to carry prominent notices stating that you changed the files.'
+    usage: Provides tracing abstractions over tracers and tracing system reporters.
+- ID: io.netty:netty-buffer+4.1.107.Final
+  mimer:
+    linking: Classpath
+    primary: 'False'
+- ID: io.netty:netty-codec+4.1.107.Final
+  mimer:
+    linking: Classpath
+    primary: 'False'
+- ID: io.netty:netty-codec-dns+4.1.107.Final
+  mimer:
+    linking: Classpath
+- ID: io.netty:netty-codec-http+4.1.107.Final
+  mimer:
+    linking: Classpath
+- ID: io.netty:netty-codec-http2+4.1.107.Final
+  mimer:
+    linking: Classpath
+- ID: io.netty:netty-codec-socks+4.1.107.Final
+  mimer:
+    linking: Classpath
+- ID: io.netty:netty-common+4.1.107.Final
+  mimer:
+    linking: Classpath
+    primary: 'False'
+- ID: io.netty:netty-handler+4.1.107.Final
+  mimer:
+    linking: Classpath
+    primary: 'False'
+- ID: io.netty:netty-handler-proxy+4.1.107.Final
+  mimer:
+    linking: Classpath
+- ID: io.netty:netty-resolver+4.1.107.Final
+  mimer:
+    linking: Classpath
+    primary: 'False'
+- ID: io.netty:netty-resolver-dns+4.1.107.Final
+  mimer:
+    linking: Classpath
+- ID: io.netty:netty-resolver-dns-classes-macos+4.1.107.Final
+  mimer:
+    linking: Classpath
+- ID: io.netty:netty-resolver-dns-native-macos+4.1.107.Final
+  mimer:
+    linking: Classpath
+- ID: io.netty:netty-transport+4.1.107.Final
+  mimer:
+    linking: Classpath
+    primary: 'False'
+- ID: io.netty:netty-transport-classes-epoll+4.1.107.Final
+  mimer:
+    linking: Classpath
+    primary: 'False'
+- ID: io.netty:netty-transport-native-epoll+4.1.107.Final
+  mimer:
+    linking: Classpath
+- ID: io.netty:netty-transport-native-unix-common+4.1.107.Final
+  mimer:
+    linking: Classpath
+    primary: 'False'
+- ID: io.opentelemetry.instrumentation:opentelemetry-instrumentation-api+1.31.0
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: io.opentelemetry.instrumentation:opentelemetry-instrumentation-api-semconv+1.31.0-alpha
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: io.opentelemetry.semconv:opentelemetry-semconv+1.21.0-alpha
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: io.opentelemetry:opentelemetry-api+1.31.0
+  bazaar:
+    prim: 18/CTX1030929
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    product_number: CTX1030929
+- ID: io.opentelemetry:opentelemetry-api-events+1.31.0-alpha
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: io.opentelemetry:opentelemetry-context+1.31.0
+  bazaar:
+    prim: 18/CTX1030929
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    product_number: CTX1030929
+- ID: io.opentelemetry:opentelemetry-exporter-common+1.31.0
+  bazaar:
+    prim: 18/CTX1030929
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    product_number: CTX1030929
+- ID: io.opentelemetry:opentelemetry-exporter-otlp+1.31.0
+  bazaar:
+    prim: 18/CTX1030929
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    obligation: 'This license has an express patent license.
+      You are required to limit the liability of others (beyond reproducing a license that contains a limitation of liability).
+      This license has a patent retaliation clause.
+      There are (or You intend to place) additional restrictions.
+      You are expressly forbidden from using the name of the author(s) or distributor(s) to promote or advertise the software.
+      You are required to disclaim warranties on behalf of others.
+      You are required to include a copy of the license in distributions that you make.
+      You are required to indemnify the original author(s) against claims arising from your use or distribution.
+      You are required to make notes of changes You made.
+      Specific instructions for handling modifications: You must cause any modified files to carry promine(...)
+      You must cause any modified files to carry prominent notices stating that you changed the files.'
+    product_number: CTX1030929
+    usage: OpenTelemetry Java SDK, used for Spring Boot 3 Distributed Systems Tracing
+- ID: io.opentelemetry:opentelemetry-exporter-otlp-common+1.31.0
+  bazaar:
+    prim: 18/CTX1030929
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    product_number: CTX1030929
+- ID: io.opentelemetry:opentelemetry-exporter-sender-okhttp+1.31.0
+  bazaar:
+    prim: 18/CTX1030929
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    product_number: CTX1030929
+- ID: io.opentelemetry:opentelemetry-extension-incubator+1.31.0-alpha
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: io.opentelemetry:opentelemetry-extension-trace-propagators+1.31.0
+  bazaar:
+    prim: 18/CTX1030929
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    product_number: CTX1030929
+- ID: io.opentelemetry:opentelemetry-sdk+1.31.0
+  bazaar:
+    prim: 18/CTX1030929
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    product_number: CTX1030929
+- ID: io.opentelemetry:opentelemetry-sdk-common+1.31.0
+  bazaar:
+    prim: 18/CTX1030929
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    product_number: CTX1030929
+- ID: io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi+1.31.0
+  bazaar:
+    prim: 18/CTX1030929
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    product_number: CTX1030929
+- ID: io.opentelemetry:opentelemetry-sdk-extension-jaeger-remote-sampler+1.31.0
+  bazaar:
+    prim: 18/CTX1030929
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    obligation: 'This license has an express patent license.
+      You are required to limit the liability of others (beyond reproducing a license that contains a limitation of liability).
+      This license has a patent retaliation clause.
+      There are (or You intend to place) additional restrictions.
+      You are expressly forbidden from using the name of the author(s) or distributor(s) to promote or advertise the software.
+      You are required to disclaim warranties on behalf of others.
+      You are required to include a copy of the license in distributions that you make.
+      You are required to indemnify the original author(s) against claims arising from your use or distribution.
+      You are required to make notes of changes You made.
+      Specific instructions for handling modifications: You must cause any modified files to carry promine(...)
+      You must cause any modified files to carry prominent notices stating that you changed the files.'
+    product_number: CTX1030929
+    usage: OpenTelemetry Java SDK, used for Spring Boot 3 Distributed Systems Tracing
+- ID: io.opentelemetry:opentelemetry-sdk-logs+1.31.0
+  bazaar:
+    prim: 18/CTX1030929
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    product_number: CTX1030929
+- ID: io.opentelemetry:opentelemetry-sdk-metrics+1.31.0
+  bazaar:
+    prim: 18/CTX1030929
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    product_number: CTX1030929
+- ID: io.opentelemetry:opentelemetry-sdk-trace+1.31.0
+  bazaar:
+    prim: 18/CTX1030929
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    product_number: CTX1030929
+- ID: io.projectreactor.netty:reactor-netty-core+1.1.16
+  mimer:
+    linking: Classpath
+- ID: io.projectreactor.netty:reactor-netty-http+1.1.16
+  mimer:
+    linking: Classpath
+- ID: io.projectreactor:reactor-core+3.6.3
+  mimer:
+    linking: Classpath
+- ID: io.prometheus:simpleclient_common+0.16.0
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: io.prometheus:simpleclient_tracer_common+0.16.0
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: io.prometheus:simpleclient_tracer_otel_agent+0.16.0
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: io.prometheus:simpleclient_tracer_otel+0.16.0
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: io.prometheus:simpleclient+0.16.0
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: io.smallrye:jandex+3.1.2
+  mimer:
+    linking: Classpath
+- ID: jakarta.activation:jakarta.activation-api+2.1.2
+  mimer:
+    linking: Classpath
+    primary: 'False'
+    selected_licenses:
+    - EPL-2.0
+- ID: jakarta.annotation:jakarta.annotation-api+2.1.1
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - EPL-2.0
+- ID: jakarta.inject:jakarta.inject-api+2.0.1
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: jakarta.persistence:jakarta.persistence-api+3.1.0
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - EPL-2.0
+- ID: jakarta.transaction:jakarta.transaction-api+2.0.1
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: jakarta.validation:jakarta.validation-api+3.0.2
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: jakarta.ws.rs:jakarta.ws.rs-api+3.1.0
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - EPL-2.0
+- ID: jakarta.xml.bind:jakarta.xml.bind-api+4.0.1
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    primary: 'False'
+    usage: Not affected by copyleft, because no GPL license software component is shipped to customer.
+    selected_licenses:
+    - EDL-1.0
+- ID: net.bytebuddy:byte-buddy+1.14.12
+  mimer:
+    linking: Classpath
+- ID: org.antlr:antlr4-runtime+4.13.0
+  bazaar:
+    prim: 50/CAX1053419
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    product_number: CAX1053419
+    selected_licenses:
+    - BSD-3-Clause
+- ID: org.apache.avro:avro+1.11.3
+  bazaar:
+    prim: 24/CAX1054634
+    retext: ''
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    obligation: 'This license has an express patent license.
+      You are required to limit the liability of others (beyond reproducing a license that contains a limitation of liability).
+      This license has a patent retaliation clause.
+      There are (or You intend to place) additional restrictions.
+      You are expressly forbidden from using the name of the author(s) or distributor(s) to promote or advertise the software.
+      You are required to disclaim warranties on behalf of others.
+      You are required to include a copy of the license in distributions that you make.
+      You are required to indemnify the original author(s) against claims arising from your use or distribution.
+      You are required to make notes of changes You made.
+      Specific instructions for handling modifications: You must cause any modified files to carry promine(...)
+      You must cause any modified files to carry prominent notices stating that you changed the files.'
+    product_number: CAX1054634
+    usage: Apache Avro is a data serialization system. It has Apache-2.0 license, not affected by copyleft, because copyleft licence refers to software components of Apache Avro which are not used by Ericsson code and not delivered to clients.
+- ID: org.apache.commons:commons-compress+1.22
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.apache.kafka:kafka-clients+3.6.1
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.apache.logging.log4j:log4j-api+2.21.1
+  mimer:
+    linking: Classpath
+- ID: org.apache.logging.log4j:log4j-to-slf4j+2.21.1
+  bazaar:
+    prim: 13/CTX1021044
+    stako: ESW2
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    product_number: CTX1021044
+    selected_licenses:
+    - Apache-2.0
+- ID: org.apache.tomcat.embed:tomcat-embed-core+10.1.19
+  mimer:
+    linking: Classpath
+- ID: org.apache.tomcat.embed:tomcat-embed-el+10.1.19
+  mimer:
+    linking: Classpath
+- ID: org.apache.tomcat.embed:tomcat-embed-websocket+10.1.19
+  mimer:
+    linking: Classpath
+- ID: org.aspectj:aspectjweaver+1.9.21
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.checkerframework:checker-qual+3.31.0
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.eclipse.angus:angus-activation+2.0.1
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - Eclipse Distribution License 1.0
+- ID: org.glassfish.hk2.external:aopalliance-repackaged+3.0.5
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - EPL-2.0
+- ID: org.glassfish.hk2:class-model+3.0.5
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.glassfish.hk2:hk2+3.0.5
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - EPL-2.0
+    usage: Not affected by copyleft, because no GPL license software component is shipped to customer.
+- ID: org.glassfish.hk2:hk2-api+3.0.5
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - EPL-2.0
+    usage: Not affected by copyleft, because no GPL license software component is shipped to customer.
+- ID: org.glassfish.hk2:hk2-core+3.0.5
+  bazaar:
+    prim: 24/CAX1056577
+    stako: ESW3
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    product_number: CAX1056577
+    selected_licenses:
+    - BSD-3-Clause
+- ID: org.glassfish.hk2:hk2-locator+3.0.5
+  bazaar:
+    prim: 24/CAX1056577
+    stako: ESW3
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    product_number: CAX1056577
+    selected_licenses:
+    - BSD-3-Clause
+- ID: org.glassfish.hk2:hk2-runlevel+3.0.5
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - BSD-3-Clause
+    usage: Not affected by copyleft, because no GPL license software component is shipped to customer.
+- ID: org.glassfish.hk2:hk2-utils+3.0.5
+  bazaar:
+    prim: 24/CAX1056577
+    stako: ESW3
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    product_number: CAX1056577
+    selected_licenses:
+    - BSD-3-Clause
+- ID: org.glassfish.hk2:spring-bridge+3.0.5
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - BSD-3-Clause
+    usage: Not affected by copyleft, because no GPL license software component is shipped to customer.
+- ID: org.glassfish.jaxb:jaxb-core+4.0.4
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - BSD-3-Clause
+- ID: org.glassfish.jaxb:jaxb-runtime+4.0.4
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - EDL-1.0
+- ID: org.glassfish.jaxb:txw2+4.0.4
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - EDL-1.0
+- ID: org.glassfish.jersey.containers:jersey-container-servlet+3.1.5
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - EPL-2.0
+- ID: org.glassfish.jersey.containers:jersey-container-servlet-core+3.1.5
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - Apache-2.0
+- ID: org.glassfish.jersey.core:jersey-client+3.1.5
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - Apache-2.0
+- ID: org.glassfish.jersey.core:jersey-common+3.1.5
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - Apache-2.0
+- ID: org.glassfish.jersey.core:jersey-server+3.1.5
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - Apache-2.0
+- ID: org.glassfish.jersey.ext:jersey-bean-validation+3.1.5
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - Apache-2.0
+- ID: org.glassfish.jersey.ext:jersey-entity-filtering+3.1.5
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - Apache-2.0
+- ID: org.glassfish.jersey.ext:jersey-spring6+3.1.5
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - EPL-2.0
+- ID: org.glassfish.jersey.inject:jersey-hk2+3.1.5
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - Apache-2.0
+- ID: org.glassfish.jersey.media:jersey-media-json-jackson+3.1.5
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - Apache-2.0
+- ID: org.hibernate.common:hibernate-commons-annotations+6.0.6.Final
+  mimer:
+    linking: Classpath
+- ID: org.hibernate.orm:hibernate-core+6.4.4.Final
+  mimer:
+    linking: Classpath
+    usage: Not affected by copyleft, because it is a non-primary dependency. The related primary dependency (org.springframework.boot:spring-boot-starter-data-jpa) has Apache-2.0 license.
+- ID: org.hibernate.validator:hibernate-validator+8.0.1.Final
+  mimer:
+    linking: Classpath
+- ID: org.javassist:javassist+3.29.2-GA
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - Apache-2.0
+- ID: org.jboss.logging:jboss-logging+3.4.3.Final
+  bazaar:
+    prim: 17/CAX1056042
+- ID: org.jboss.logging:jboss-logging+3.5.3.Final
+  mimer:
+    linking: Classpath
+- ID: org.jetbrains.kotlin:kotlin-stdlib+1.9.22
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    primary: 'False'
+    usage: Not affected by copyleft, because no GPL license software component is shipped to customer.
+- ID: org.jetbrains.kotlin:kotlin-stdlib-common+1.9.22
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    usage: Not affected by copyleft, because no GPL license software component is shipped to customer.
+- ID: org.jetbrains.kotlin:kotlin-stdlib-jdk7+1.9.22
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    primary: 'False'
+    usage: Not affected by copyleft, because no GPL license software component is shipped to customer.
+- ID: org.jetbrains.kotlin:kotlin-stdlib-jdk8+1.9.22
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    primary: 'False'
+    usage: Not affected by copyleft, because no GPL license software component is shipped to customer.
+- ID: org.jetbrains:annotations+17.0.0
+  mimer:
+    primary: 'False'
+- ID: org.ow2.asm:asm-analysis+9.6
+  bazaar:
+    prim: 26/CAX1057234
+    stako: ESW3
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    product_number: CAX1057234
+    selected_licenses:
+    - BSD-3-Clause
+- ID: org.ow2.asm:asm-commons+9.6
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    selected_licenses:
+    - BSD-3-Clause
+- ID: org.ow2.asm:asm-tree+9.6
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.ow2.asm:asm-util+9.6
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.postgresql:postgresql+42.6.2
+  bazaar:
+    prim: 86/CAX1053319
+    stako: ESW2
+  mimer:
+    linking: Classpath
+    obligation: 'Redistribution of source code must retain the copyright notice, the list of conditions and the BSD warranty disclaimer.
+      Redistributions in binary form of the software must reproduce the copyright notice, the BSD list of conditions and the BSD warranty disclaimer in the documentation and/or materials provided with the distribution.
+      Specific instructions for handling attributions: Redistributions of source code must retain the above(...)
+      Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+      Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+      Terms for distribution of source code.: Redistributions of source code must retain the above(...)
+      Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+      Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.'
+    product_number: CAX1053319
+    selected_licenses:
+    - BSD-2-Clause
+    usage: JDBC Driver allows Java programs to connect to a PostgreSQL database using standard, database independent Java code.
+- ID: org.projectlombok:lombok+1.18.30
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    obligation: 'The MIT copyright notice and the MIT permission notices shall be included in all copies or substantial portions of the software (in whatever format, either in binary or in source ).
+      The MIT copyright notice and the MIT permission notices shall be included in all copies or substantial portions of the software (in whatever format, either in binary or in source ).
+      The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.'
+    usage: Project Lombok is a java library that automatically plugs into your editor and build tools, spicing up your java. GPL license is a false positive find in lombok, as it can be found in some build scripts, which are not used by Ericsson code and not delivered to clients.
+- ID: org.reactivestreams:reactive-streams+1.0.4
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.slf4j:jul-to-slf4j+2.0.12
+  mimer:
+    linking: Classpath
+- ID: org.slf4j:slf4j-api+2.0.12
+  mimer:
+    linking: Classpath
+- ID: org.snakeyaml:snakeyaml-engine+2.7
+  mimer:
+    linking: Classpath
+- ID: org.springframework.boot:spring-boot+3.2.3
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.springframework.boot:spring-boot-actuator+3.2.3
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.springframework.boot:spring-boot-actuator-autoconfigure+3.2.3
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.springframework.boot:spring-boot-autoconfigure+3.2.3
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.springframework.boot:spring-boot-starter+3.2.3
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.springframework.boot:spring-boot-starter-actuator+3.2.3
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    obligation: 'This license has an express patent license.
+      You are required to limit the liability of others (beyond reproducing a license that contains a limitation of liability).
+      This license has a patent retaliation clause.
+      There are (or You intend to place) additional restrictions.
+      You are expressly forbidden from using the name of the author(s) or distributor(s) to promote or advertise the software.
+      You are required to disclaim warranties on behalf of others.
+      You are required to include a copy of the license in distributions that you make.
+      You are required to indemnify the original author(s) against claims arising from your use or distribution.
+      You are required to make notes of changes You made.
+      Specific instructions for handling modifications: You must cause any modified files to carry promine(...)
+      You must cause any modified files to carry prominent notices stating that you changed the files.'
+    usage: Makes it easy to create stand-alone, production-grade Spring based Applications.
+- ID: org.springframework.boot:spring-boot-starter-aop+3.2.3
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.springframework.boot:spring-boot-starter-data-jpa+3.2.3
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    obligation: 'This license has an express patent license.
+      You are required to limit the liability of others (beyond reproducing a license that contains a limitation of liability).
+      This license has a patent retaliation clause.
+      There are (or You intend to place) additional restrictions.
+      You are expressly forbidden from using the name of the author(s) or distributor(s) to promote or advertise the software.
+      You are required to disclaim warranties on behalf of others.
+      You are required to include a copy of the license in distributions that you make.
+      You are required to indemnify the original author(s) against claims arising from your use or distribution.
+      You are required to make notes of changes You made.
+      Specific instructions for handling modifications: You must cause any modified files to carry promine(...)
+      You must cause any modified files to carry prominent notices stating that you changed the files.'
+    usage: Makes it easy to create stand-alone, production-grade Spring based Applications.
+- ID: org.springframework.boot:spring-boot-starter-jdbc+3.2.3
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    obligation: 'This license has an express patent license.
+      You are required to limit the liability of others (beyond reproducing a license that contains a limitation of liability).
+      This license has a patent retaliation clause.
+      There are (or You intend to place) additional restrictions.
+      You are expressly forbidden from using the name of the author(s) or distributor(s) to promote or advertise the software.
+      You are required to disclaim warranties on behalf of others.
+      You are required to include a copy of the license in distributions that you make.
+      You are required to indemnify the original author(s) against claims arising from your use or distribution.
+      You are required to make notes of changes You made.
+      Specific instructions for handling modifications: You must cause any modified files to carry promine(...)
+      You must cause any modified files to carry prominent notices stating that you changed the files.'
+    usage: Makes it easy to create stand-alone, production-grade Spring based Applications.
+- ID: org.springframework.boot:spring-boot-starter-jersey+3.2.3
+  mimer:
+    linking: Classpath
+    obligation: 'This license has an express patent license.
+      You are required to limit the liability of others (beyond reproducing a license that contains a limitation of liability).
+      This license has a patent retaliation clause.
+      There are (or You intend to place) additional restrictions.
+      You are expressly forbidden from using the name of the author(s) or distributor(s) to promote or advertise the software.
+      You are required to disclaim warranties on behalf of others.
+      You are required to include a copy of the license in distributions that you make.
+      You are required to indemnify the original author(s) against claims arising from your use or distribution.
+      You are required to make notes of changes You made.
+      Specific instructions for handling modifications: You must cause any modified files to carry promine(...)
+      You must cause any modified files to carry prominent notices stating that you changed the files.'
+    usage: Simplifies the development of creating a JPA-based data access layer.
+- ID: org.springframework.boot:spring-boot-starter-json+3.2.3
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.springframework.boot:spring-boot-starter-logging+3.2.3
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.springframework.boot:spring-boot-starter-reactor-netty+3.2.3
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.springframework.boot:spring-boot-starter-tomcat+3.2.3
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.springframework.boot:spring-boot-starter-validation+3.2.3
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.springframework.boot:spring-boot-starter-web+3.2.3
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    obligation: 'This license has an express patent license.
+      You are required to limit the liability of others (beyond reproducing a license that contains a limitation of liability).
+      This license has a patent retaliation clause.
+      There are (or You intend to place) additional restrictions.
+      You are expressly forbidden from using the name of the author(s) or distributor(s) to promote or advertise the software.
+      You are required to disclaim warranties on behalf of others.
+      You are required to include a copy of the license in distributions that you make.
+      You are required to indemnify the original author(s) against claims arising from your use or distribution.
+      You are required to make notes of changes You made.
+      Specific instructions for handling modifications: You must cause any modified files to carry promine(...)
+      You must cause any modified files to carry prominent notices stating that you changed the files.'
+    usage: Makes it easy to create stand-alone, production-grade Spring based Applications.
+- ID: org.springframework.boot:spring-boot-starter-webflux+3.2.3
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    obligation: 'This license has an express patent license.
+      You are required to limit the liability of others (beyond reproducing a license that contains a limitation of liability).
+      This license has a patent retaliation clause.
+      There are (or You intend to place) additional restrictions.
+      You are expressly forbidden from using the name of the author(s) or distributor(s) to promote or advertise the software.
+      You are required to disclaim warranties on behalf of others.
+      You are required to include a copy of the license in distributions that you make.
+      You are required to indemnify the original author(s) against claims arising from your use or distribution.
+      You are required to make notes of changes You made.
+      Specific instructions for handling modifications: You must cause any modified files to carry promine(...)
+      You must cause any modified files to carry prominent notices stating that you changed the files.'
+    usage: Makes it easy to create stand-alone, production-grade Spring based Applications.
+- ID: org.springframework.cloud:spring-cloud-commons+4.1.0
+  mimer:
+    linking: Classpath
+- ID: org.springframework.cloud:spring-cloud-context+4.1.0
+  mimer:
+    linking: Classpath
+- ID: org.springframework.cloud:spring-cloud-kubernetes-commons+3.1.0
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.springframework.cloud:spring-cloud-kubernetes-fabric8-autoconfig+3.1.0
+  mimer:
+    linking: Classpath
+- ID: org.springframework.cloud:spring-cloud-kubernetes-fabric8-leader+3.1.0
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    obligation: 'This license has an express patent license.
+      You are required to limit the liability of others (beyond reproducing a license that contains a limitation of liability).
+      This license has a patent retaliation clause.
+      There are (or You intend to place) additional restrictions.
+      You are expressly forbidden from using the name of the author(s) or distributor(s) to promote or advertise the software.
+      You are required to disclaim warranties on behalf of others.
+      You are required to include a copy of the license in distributions that you make.
+      You are required to indemnify the original author(s) against claims arising from your use or distribution.
+      You are required to make notes of changes You made.
+      Specific instructions for handling modifications: You must cause any modified files to carry promine(...)
+      You must cause any modified files to carry prominent notices stating that you changed the files.'
+    usage: Spring Cloud event bus. Used for logging.
+- ID: org.springframework.data:spring-data-commons+3.2.3
+  mimer:
+    linking: Classpath
+- ID: org.springframework.data:spring-data-jpa+3.2.3
+  mimer:
+    linking: Classpath
+- ID: org.springframework.integration:spring-integration-core+6.2.2
+  mimer:
+    linking: Classpath
+- ID: org.springframework.kafka:spring-kafka+3.1.2
+  mimer:
+    linking: Classpath
+    obligation: 'This license has an express patent license.
+      You are required to limit the liability of others (beyond reproducing a license that contains a limitation of liability).
+      This license has a patent retaliation clause.
+      There are (or You intend to place) additional restrictions.
+      You are expressly forbidden from using the name of the author(s) or distributor(s) to promote or advertise the software.
+      You are required to disclaim warranties on behalf of others.
+      You are required to include a copy of the license in distributions that you make.
+      You are required to indemnify the original author(s) against claims arising from your use or distribution.
+      You are required to make notes of changes You made.
+      Specific instructions for handling modifications: You must cause any modified files to carry promine(...)
+      You must cause any modified files to carry prominent notices stating that you changed the files.'
+    usage: Spring for Apache Kafka.
+- ID: org.springframework.retry:spring-retry+2.0.5
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    obligation: 'This license has an express patent license.
+      You are required to limit the liability of others (beyond reproducing a license that contains a limitation of liability).
+      This license has a patent retaliation clause.
+      There are (or You intend to place) additional restrictions.
+      You are expressly forbidden from using the name of the author(s) or distributor(s) to promote or advertise the software.
+      You are required to disclaim warranties on behalf of others.
+      You are required to include a copy of the license in distributions that you make.
+      You are required to indemnify the original author(s) against claims arising from your use or distribution.
+      You are required to make notes of changes You made.
+      Specific instructions for handling modifications: You must cause any modified files to carry promine(...)
+      You must cause any modified files to carry prominent notices stating that you changed the files.'
+    usage: Spring Retry provides an abstraction around retrying failed operations, with an emphasis on declarative control of the process and policy-based behaviour that is easy to extend and customize. For instance, you can configure a plain POJO operation to retry if it fails, based on the type of exception, and with a fixed or exponential backoff.
+- ID: org.springframework.security:spring-security-crypto+6.2.2
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.springframework:spring-aop+6.1.4
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.springframework:spring-aspects+6.1.4
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    obligation: 'This license has an express patent license.
+      You are required to limit the liability of others (beyond reproducing a license that contains a limitation of liability).
+      This license has a patent retaliation clause.
+      There are (or You intend to place) additional restrictions.
+      You are expressly forbidden from using the name of the author(s) or distributor(s) to promote or advertise the software.
+      You are required to disclaim warranties on behalf of others.
+      You are required to include a copy of the license in distributions that you make.
+      You are required to indemnify the original author(s) against claims arising from your use or distribution.
+      You are required to make notes of changes You made.
+      Specific instructions for handling modifications: You must cause any modified files to carry promine(...)
+      You must cause any modified files to carry prominent notices stating that you changed the files.'
+    usage: Spring Framework is a Java platform that provides comprehensive infrastructure support for developing Java applications.
+- ID: org.springframework:spring-beans+6.1.4
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.springframework:spring-context+6.1.4
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.springframework:spring-core+6.1.4
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    primary: 'False'
+- ID: org.springframework:spring-expression+6.1.4
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.springframework:spring-jcl+6.1.4
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+    primary: 'False'
+- ID: org.springframework:spring-jdbc+6.1.4
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.springframework:spring-messaging+6.1.4
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.springframework:spring-orm+6.1.4
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.springframework:spring-tx+6.1.4
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.springframework:spring-web+6.1.4
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.springframework:spring-webflux+6.1.4
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.springframework:spring-webmvc+6.1.4
+  bazaar:
+    stako_decision_reason: allowed
+  mimer:
+    linking: Classpath
+- ID: org.xerial.snappy:snappy-java+1.1.10.5
+  bazaar:
+    prim: 32/CAX1056425
+  mimer:
+    linking: Classpath
+- ID: org.yaml:snakeyaml+2.2
+  mimer:
+    linking: Classpath
+- ID: org.glassfish.hk2:osgi-resource-locator+1.0.3
+  mimer:
+    usage: Not affected by copyleft, because it is a non-primary dependency. The related primary dependency (org.springframework.boot:spring-boot-starter-jersey:jar:3.2.3) has Apache-2.0 license.

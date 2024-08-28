@@ -1,0 +1,2394 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "$id": "urn:adp:helm:schemas:v1:DR-D1121-210:v1",
+    "title": "Root Schema",
+    "type": "object",
+    "default": {},
+    "required": [
+        "replicaCount",
+        "podPriority",
+        "podDisruptionBudget",
+        "updateStrategy",
+        "labels",
+        "podAnnotations",
+        "annotations",
+        "imageCredentials",
+        "imagePullSecrets",
+        "nameOverride",
+        "fullnameOverride",
+        "serviceAccount",
+        "service",
+        "eric-pm-server",
+        "prometheus",
+        "terminationGracePeriodSeconds",
+        "resources",
+        "autoScaling",
+        "leaderConfigMapName",
+        "nodeSelector",
+        "topologySpreadConstraints",
+        "tolerations",
+        "affinity",
+        "probes",
+        "kafka",
+        "appArmorProfile",
+        "seccompProfile",
+        "eric-pm-kpi-data",
+        "retry",
+        "dmm",
+        "meterCollectors",
+        "log",
+        "podSecurityContext",
+        "securityPolicy",
+        "cnomServer",
+        "dst"
+    ],
+    "properties": {
+        "replicaCount": {
+            "title": "The replicaCount Schema",
+            "type": "integer",
+            "default": 1,
+            "minimum": 0,
+            "examples": [
+                1
+            ]
+        },
+        "podPriority": {
+            "title": "The podPriority Schema",
+            "type": "object",
+            "default": {},
+            "required": [
+                "eric-oss-pm-stats-exporter"
+            ],
+            "properties": {
+                "eric-oss-pm-stats-exporter": {
+                    "title": "The eric-oss-pm-stats-exporter Schema",
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "priorityClassName"
+                    ],
+                    "properties": {
+                        "priorityClassName": {
+                            "title": "The priorityClassName Schema",
+                            "type": "string",
+                            "default": "",
+                            "examples": [
+                                ""
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "priorityClassName": ""
+                    }]
+                }
+            },
+            "examples": [{
+                "eric-oss-pm-stats-exporter": {
+                    "priorityClassName": ""
+                }
+            }]
+        },
+        "podDisruptionBudget": {
+            "title": "The podDisruptionBudget Schema",
+            "type": "object",
+            "default": {},
+            "required": [
+                "minAvailable"
+            ],
+            "properties": {
+                "minAvailable": {
+                    "title": "The minAvailable Schema",
+                    "minimum": 0,
+                    "type": ["string", "integer", "null"],
+                    "pattern": "^([0-9]+%)?$",
+                    "description": "If the type is string, then the following pattern must be followed: ^([0-9]+%)?$",
+                    "default": 1,
+                    "examples": [
+                        1
+                    ]
+                },
+                "maxUnavailable": {
+                    "title": "The maxUnavailable Schema",
+                    "minimum": 0,
+                    "type": ["string", "integer", "null"],
+                    "pattern": "^([0-9]+%)?$",
+                    "description": "If the type is string, then the following pattern must be followed: ^([0-9]+%)?$",
+                    "default": "",
+                    "examples": [
+                        ""
+                    ]
+                }
+            },
+            "examples": [{
+                "minAvailable": 1,
+                "maxUnavailable": ""
+            }]
+        },
+        "updateStrategy": {
+            "title": "The updateStrategy Schema",
+            "type": "object",
+            "default": {},
+            "required": [
+                "type",
+                "rollingUpdate"
+            ],
+            "properties": {
+                "type": {
+                    "title": "The type Schema",
+                    "type": "string",
+                    "default": "RollingUpdate",
+                    "enum": ["RollingUpdate", "Recreate"],
+                    "examples": [
+                        "RollingUpdate"
+                    ]
+                },
+                "rollingUpdate": {
+                    "title": "The rollingUpdate Schema",
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "maxSurge",
+                        "maxUnavailable"
+                    ],
+                    "properties": {
+                        "maxSurge": {
+                            "title": "The maxSurge Schema",
+                            "type": "integer",
+                            "default": 1,
+                            "minimum": 1,
+                            "examples": [
+                                1
+                            ]
+                        },
+                        "maxUnavailable": {
+                            "title": "The maxUnavailable Schema",
+                            "type": "integer",
+                            "default": 0,
+                            "minimum": 0,
+                            "examples": [
+                                0
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "maxSurge": 1,
+                        "maxUnavailable": 0
+                    }]
+                }
+            },
+            "examples": [{
+                "type": "RollingUpdate",
+                "rollingUpdate": {
+                    "maxSurge": 1,
+                    "maxUnavailable": 0
+                }
+            }]
+        },
+        "labels": {
+            "title": "The labels Schema",
+            "type": "object",
+            "default": {},
+            "required": [],
+            "properties": {},
+            "examples": [{}]
+        },
+        "podAnnotations": {
+            "title": "The podAnnotations Schema",
+            "type": "object",
+            "default": {},
+            "required": [],
+            "properties": {},
+            "examples": [{}]
+        },
+        "annotations": {
+            "title": "The annotations Schema",
+            "type": "object",
+            "default": {},
+            "required": [],
+            "properties": {},
+            "examples": [{}]
+        },
+        "imageCredentials": {
+            "title": "The imageCredentials Schema",
+            "type": "object",
+            "default": {},
+            "required": [
+                "eric-oss-pm-stats-exporter"
+            ],
+            "properties": {
+                "eric-oss-pm-stats-exporter": {
+                    "title": "The eric-oss-pm-stats-exporter Schema",
+                    "type": "object",
+                    "default": {},
+                    "required": ["registry"],
+                    "properties": {
+                        "repoPath": {
+                            "title": "The repoPath Schema",
+                            "type": ["null", "string"],
+                            "default": null,
+                            "examples": [
+                                null
+                            ]
+                        },
+                        "registry": {
+                            "title": "The registry Schema",
+                            "type": "object",
+                            "default": {},
+                            "required": [],
+                            "properties": {},
+                            "examples": [{}]
+                        }
+                    },
+                    "examples": [{
+                        "repoPath": null,
+                        "registry": {}
+                    }]
+                }
+            },
+            "examples": [{
+                "eric-oss-pm-stats-exporter": {
+                    "repoPath": null,
+                    "registry": {}
+                }
+            }]
+        },
+        "imagePullSecrets": {
+            "title": "The imagePullSecrets Schema",
+            "type": "array",
+            "default": [],
+            "items": {},
+            "examples": [
+                []
+            ]
+        },
+        "nameOverride": {
+            "title": "The nameOverride Schema",
+            "type": "string",
+            "default": "",
+            "examples": [
+                ""
+            ]
+        },
+        "fullnameOverride": {
+            "title": "The fullnameOverride Schema",
+            "type": "string",
+            "default": "",
+            "examples": [
+                ""
+            ]
+        },
+        "serviceAccount": {
+            "title": "The serviceAccount Schema",
+            "type": "object",
+            "default": {},
+            "required": [
+                "create",
+                "name"
+            ],
+            "properties": {
+                "create": {
+                    "title": "The create Schema",
+                    "type": "boolean",
+                    "default": true,
+                    "examples": [
+                        true
+                    ]
+                },
+                "name": {
+                    "title": "The name Schema",
+                    "type": "string",
+                    "default": "",
+                    "examples": [
+                        ""
+                    ]
+                }
+            },
+            "examples": [{
+                "create": true,
+                "name": ""
+            }]
+        },
+        "service": {
+            "title": "The service Schema",
+            "type": "object",
+            "default": {},
+            "required": [
+                "type",
+                "port",
+                "endpoints"
+            ],
+            "properties": {
+                "type": {
+                    "title": "The type Schema",
+                    "type": "string",
+                    "default": "ClusterIP",
+                    "enum": ["ClusterIP", "NodePort", "LoadBalancer", "ExternalName"],
+                    "examples": [
+                        "ClusterIP"
+                    ]
+                },
+                "port": {
+                    "title": "The port Schema",
+                    "type": "integer",
+                    "default": 8080,
+                    "minimum": 0,
+                    "examples": [
+                        8080
+                    ]
+                },
+                "endpoints": {
+                    "title": "The endpoints Schema",
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "chassisapi"
+                    ],
+                    "properties": {
+                        "chassisapi": {
+                            "title": "The chassisapi Schema",
+                            "type": "object",
+                            "default": {},
+                            "required": [
+                                "tls"
+                            ],
+                            "properties": {
+                                "tls": {
+                                    "title": "The tls Schema",
+                                    "type": "object",
+                                    "default": {},
+                                    "required": [
+                                        "enforced",
+                                        "verifyClientCertificate"
+                                    ],
+                                    "properties": {
+                                        "enforced": {
+                                            "title": "The enforced Schema",
+                                            "type": "string",
+                                            "default": "required",
+                                            "examples": [
+                                                "required"
+                                            ]
+                                        },
+                                        "verifyClientCertificate": {
+                                            "title": "The verifyClientCertificate Schema",
+                                            "type": "string",
+                                            "default": "required",
+                                            "examples": [
+                                                "required"
+                                            ]
+                                        }
+                                    },
+                                    "examples": [{
+                                        "enforced": "required",
+                                        "verifyClientCertificate": "required"
+                                    }]
+                                }
+                            },
+                            "examples": [{
+                                "tls": {
+                                    "enforced": "required",
+                                    "verifyClientCertificate": "required"
+                                }
+                            }]
+                        }
+                    },
+                    "examples": [{
+                        "chassisapi": {
+                            "tls": {
+                                "enforced": "required",
+                                "verifyClientCertificate": "required"
+                            }
+                        }
+                    }]
+                }
+            },
+            "examples": [{
+                "type": "ClusterIP",
+                "port": 8080,
+                "endpoints": {
+                    "chassisapi": {
+                        "tls": {
+                            "enforced": "required",
+                            "verifyClientCertificate": "required"
+                        }
+                    }
+                }
+            }]
+        },
+        "eric-pm-server": {
+            "title": "The eric-pm-server Schema",
+            "type": "object",
+            "default": {},
+            "required": [
+                "rbac"
+            ],
+            "properties": {
+                "rbac": {
+                    "title": "The rbac Schema",
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "appMonitoring"
+                    ],
+                    "properties": {
+                        "appMonitoring": {
+                            "title": "The appMonitoring Schema",
+                            "type": "object",
+                            "default": {},
+                            "required": [
+                                "enabled"
+                            ],
+                            "properties": {
+                                "enabled": {
+                                    "title": "The enabled Schema",
+                                    "type": "boolean",
+                                    "default": true,
+                                    "examples": [
+                                        true
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "enabled": true
+                            }]
+                        }
+                    },
+                    "examples": [{
+                        "appMonitoring": {
+                            "enabled": true
+                        }
+                    }]
+                }
+            },
+            "examples": [{
+                "rbac": {
+                    "appMonitoring": {
+                        "enabled": true
+                    }
+                }
+            }]
+        },
+        "prometheus": {
+            "title": "The prometheus Schema",
+            "type": "object",
+            "default": {},
+            "required": [
+                "path",
+                "scrape"
+            ],
+            "properties": {
+                "path": {
+                    "title": "The path Schema",
+                    "type": "string",
+                    "default": "/actuator/prometheus",
+                    "examples": [
+                        "/actuator/prometheus"
+                    ]
+                },
+                "scrape": {
+                    "title": "The scrape Schema",
+                    "type": "boolean",
+                    "default": true,
+                    "examples": [
+                        true
+                    ]
+                }
+            },
+            "examples": [{
+                "path": "/actuator/prometheus",
+                "scrape": true
+            }]
+        },
+        "terminationGracePeriodSeconds": {
+            "title": "The terminationGracePeriodSeconds Schema",
+            "type": "integer",
+            "default": 30,
+            "minimum": 0,
+            "examples": [
+                30
+            ]
+        },
+        "resources": {
+            "title": "The resources Schema",
+            "type": "object",
+            "default": {},
+            "required": [
+                "eric-oss-pm-stats-exporter"
+            ],
+            "properties": {
+                "eric-oss-pm-stats-exporter": {
+                    "title": "The eric-oss-pm-stats-exporter Schema",
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "requests",
+                        "limits",
+                        "jvm"
+                    ],
+                    "properties": {
+                        "requests": {
+                            "title": "The requests Schema",
+                            "type": "object",
+                            "default": {},
+                            "required": [
+                                "memory",
+                                "cpu",
+                                "ephemeral-storage"
+                            ],
+                            "properties": {
+                                "memory": {
+                                    "title": "The memory Schema",
+                                    "type": ["string", "integer"],
+                                    "default": "256Mi",
+                                    "pattern": "^(?:\\d+(E|P|T|G|M|k|Ei|Pi|Ti|Gi|Mi|Ki)?)?$",
+                                    "description": "The following pattern must be followed: ^(?:\\d+(E|P|T|G|M|k|Ei|Pi|Ti|Gi|Mi|Ki)?)?$",
+                                    "examples": [
+                                        "256Mi"
+                                    ]
+                                },
+                                "cpu": {
+                                    "title": "The cpu Schema",
+                                    "type": ["string", "integer"],
+                                    "default": "125m",
+                                    "pattern": "^(?:\\d+\\.?\\d*m?)?$",
+                                    "description": "The following pattern must be followed: ^(?:\\d+\\.?\\d*m?)?$",
+                                    "examples": [
+                                        "125m"
+                                    ]
+                                },
+                                "ephemeral-storage": {
+                                    "title": "The ephemeral-storage Schema",
+                                    "type": ["string", "integer"],
+                                    "default": "1Gi",
+                                    "pattern": "^(?:\\d+(E|P|T|G|M|k|Ei|Pi|Ti|Gi|Mi|Ki)?)?$",
+                                    "description": "The following pattern must be followed: ^(?:\\d+(E|P|T|G|M|k|Ei|Pi|Ti|Gi|Mi|Ki)?)?$",
+                                    "examples": [
+                                        "1Gi"
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "memory": "256Mi",
+                                "cpu": "125m",
+                                "ephemeral-storage": "1Gi"
+                            }]
+                        },
+                        "limits": {
+                            "title": "The limits Schema",
+                            "type": "object",
+                            "default": {},
+                            "required": [
+                                "memory",
+                                "cpu",
+                                "ephemeral-storage"
+                            ],
+                            "properties": {
+                                "memory": {
+                                    "title": "The memory Schema",
+                                    "type": ["string", "integer"],
+                                    "default": "2Gi",
+                                    "pattern": "^(?:\\d+(E|P|T|G|M|k|Ei|Pi|Ti|Gi|Mi|Ki)?)?$",
+                                    "description": "The following pattern must be followed: ^(?:\\d+(E|P|T|G|M|k|Ei|Pi|Ti|Gi|Mi|Ki)?)?$",
+                                    "examples": [
+                                        "2Gi"
+                                    ]
+                                },
+                                "cpu": {
+                                    "title": "The cpu Schema",
+                                    "type": ["string", "integer"],
+                                    "default": "500m",
+                                    "pattern": "^(?:\\d+\\.?\\d*m?)?$",
+                                    "description": "The following pattern must be followed: ^(?:\\d+\\.?\\d*m?)?$",
+                                    "examples": [
+                                        "500m"
+                                    ]
+                                },
+                                "ephemeral-storage": {
+                                    "title": "The ephemeral-storage Schema",
+                                    "type": ["string", "integer"],
+                                    "default": "2Gi",
+                                    "pattern": "^(?:\\d+(E|P|T|G|M|k|Ei|Pi|Ti|Gi|Mi|Ki)?)?$",
+                                    "description": "The following pattern must be followed: ^(?:\\d+(E|P|T|G|M|k|Ei|Pi|Ti|Gi|Mi|Ki)?)?$",
+                                    "examples": [
+                                        "2Gi"
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "memory": "2Gi",
+                                "cpu": "500m",
+                                "ephemeral-storage": "2Gi"
+                            }]
+                        },
+                        "jvm": {
+                            "title": "The jvm Schema",
+                            "type": "object",
+                            "default": {},
+                            "required": [
+                                "initialMemoryAllocationPercentage",
+                                "smallMemoryAllocationMaxPercentage",
+                                "largeMemoryAllocationMaxPercentage"
+                            ],
+                            "properties": {
+                                "initialMemoryAllocationPercentage": {
+                                    "type": "integer",
+                                    "default": "50",
+                                    "minimum": 0,
+                                    "examples": [
+                                        50
+                                    ]
+                                },
+                                "smallMemoryAllocationMaxPercentage": {
+                                    "type": "integer",
+                                    "default": "70",
+                                    "minimum": 0,
+                                    "examples": [
+                                        70
+                                    ]
+                                },
+                                "largeMemoryAllocationMaxPercentage": {
+                                    "type": "integer",
+                                    "default": "75",
+                                    "minimum": 0,
+                                    "examples": [
+                                        75
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "jvm": {
+                                    "initialMemoryAllocationPercentage": 50,
+                                    "smallMemoryAllocationMaxPercentage": 70,
+                                    "largeMemoryAllocationMaxPercentage": 75
+                                }
+                            }]
+                        }
+                    },
+                    "examples": [{
+                        "requests": {
+                            "memory": "256Mi",
+                            "cpu": "125m",
+                            "ephemeral-storage": "1Gi"
+                        },
+                        "limits": {
+                            "memory": "2Gi",
+                            "cpu": "500m",
+                            "ephemeral-storage": "2Gi"
+                        },
+                        "jvm": {
+                            "initialMemoryAllocationPercentage": 50,
+                            "smallMemoryAllocationMaxPercentage": 70,
+                            "largeMemoryAllocationMaxPercentage": 75
+                        }
+                    }]
+                }
+            },
+            "examples": [{
+                "eric-oss-pm-stats-exporter": {
+                    "requests": {
+                        "memory": "256Mi",
+                        "cpu": "125m",
+                        "ephemeral-storage": "1Gi"
+                    },
+                    "limits": {
+                        "memory": "2Gi",
+                        "cpu": "500m",
+                        "ephemeral-storage": "2Gi"
+                    },
+                    "jvm": {
+                        "initialMemoryAllocationPercentage": 50,
+                        "smallMemoryAllocationMaxPercentage": 70,
+                        "largeMemoryAllocationMaxPercentage": 75
+                    }
+                }
+            }]
+        },
+        "autoScaling": {
+            "title": "The autoScaling Schema",
+            "type": "object",
+            "default": {},
+            "required": [
+                "enabled",
+                "minReplicas",
+                "maxReplicas",
+                "targetCPUUtilizationPercentage"
+            ],
+            "properties": {
+                "enabled": {
+                    "title": "The enabled Schema",
+                    "type": "boolean",
+                    "default": false,
+                    "examples": [
+                        false
+                    ]
+                },
+                "minReplicas": {
+                    "title": "The minReplicas Schema",
+                    "type": "integer",
+                    "default": 1,
+                    "minimum": 1,
+                    "examples": [
+                        1
+                    ]
+                },
+                "maxReplicas": {
+                    "title": "The maxReplicas Schema",
+                    "type": "integer",
+                    "default": 100,
+                    "minimum": 1,
+                    "examples": [
+                        100
+                    ]
+                },
+                "targetCPUUtilizationPercentage": {
+                    "title": "The targetCPUUtilizationPercentage Schema",
+                    "type": "integer",
+                    "default": 80,
+                    "minimum": 1,
+                    "maximum": 100,
+                    "examples": [
+                        80
+                    ]
+                }
+            },
+            "examples": [{
+                "enabled": false,
+                "minReplicas": 1,
+                "maxReplicas": 100,
+                "targetCPUUtilizationPercentage": 80
+            }]
+        },
+        "leaderConfigMapName": {
+            "title": "The leaderConfigMapName Schema",
+            "type": "string",
+            "default": "pm-stats-exporter-leader-configmap",
+            "examples": [
+                "pm-stats-exporter-leader-configmap"
+            ]
+        },
+        "nodeSelector": {
+            "title": "The nodeSelector Schema",
+            "type": "object",
+            "default": {},
+            "required": [],
+            "properties": {},
+            "examples": [{}]
+        },
+        "topologySpreadConstraints": {
+            "title": "The topologySpreadConstraints Schema",
+            "type": "object",
+            "default": {},
+            "required": [
+                "deployment",
+                "test"
+            ],
+            "properties": {
+                "deployment": {
+                    "title": "The deployment Schema",
+                    "type": "array",
+                    "default": [],
+                    "items": {},
+                    "examples": [
+                        []
+                    ]
+                },
+                "test": {
+                    "title": "The test Schema",
+                    "type": "array",
+                    "default": [],
+                    "items": {},
+                    "examples": [
+                        []
+                    ]
+                }
+            },
+            "examples": [{
+                "deployment": [],
+                "test": []
+            }]
+        },
+        "tolerations": {
+          "title": "The tolerations Schema",
+          "type": "array",
+          "default": [],
+          "items": {
+            "title": "A Schema",
+            "type": "object",
+            "required": [],
+            "properties": {
+              "key": {
+                "title": "The key Schema",
+                "type": "string",
+                "examples": [
+                  "node.kubernetes.io/not-ready",
+                  "node.kubernetes.io/unreachable"
+                ]
+              },
+              "operator": {
+                "title": "The operator Schema",
+                "type": "string",
+                "enum": ["Exists", "Equal", "DoesNotExist", "NotEqual"],
+                "examples": [
+                  "Exists"
+                ]
+              },
+              "effect": {
+                "title": "The effect Schema",
+                "type": "string",
+                "enum": ["NoSchedule", "PreferNoSchedule", "NoExecute"],
+                "examples": [
+                  "NoExecute"
+                ]
+              },
+              "tolerationSeconds": {
+                "title": "The tolerationSeconds Schema",
+                "type": "integer",
+                "minimum": 0,
+                "examples": [
+                  0
+                ]
+              }
+            },
+            "examples": [{
+              "key": "node.kubernetes.io/not-ready",
+              "operator": "Exists",
+              "effect": "NoExecute",
+              "tolerationSeconds": 0
+            },
+              {
+                "key": "node.kubernetes.io/unreachable",
+                "operator": "Exists",
+                "effect": "NoExecute",
+                "tolerationSeconds": 0
+              }]
+          },
+          "examples": [
+            [{
+              "key": "node.kubernetes.io/not-ready",
+              "operator": "Exists",
+              "effect": "NoExecute",
+              "tolerationSeconds": 0
+            },
+              {
+                "key": "node.kubernetes.io/unreachable",
+                "operator": "Exists",
+                "effect": "NoExecute",
+                "tolerationSeconds": 0
+              }]
+          ]
+        },
+        "affinity": {
+            "title": "The affinity Schema",
+            "type": "object",
+            "default": {},
+            "required": [
+                "podAntiAffinity",
+                "topologyKey"
+            ],
+            "properties": {
+                "podAntiAffinity": {
+                    "title": "The podAntiAffinity Schema",
+                    "type": "string",
+                    "default": "soft",
+                    "enum": ["soft", "hard"],
+                    "examples": [
+                        "soft"
+                    ]
+                },
+                "topologyKey": {
+                    "title": "The topologyKey Schema",
+                    "type": "string",
+                    "default": "kubernetes.io/hostname"
+                }
+            },
+            "examples": [{
+                "podAntiAffinity": "soft",
+                "topologyKey": "kubernetes.io/hostname"
+            }]
+        },
+        "probes": {
+            "title": "The probes Schema",
+            "type": "object",
+            "default": {},
+            "required": [
+                "eric-oss-pm-stats-exporter"
+            ],
+            "properties": {
+                "eric-oss-pm-stats-exporter": {
+                    "title": "The eric-oss-pm-stats-exporter Schema",
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "livenessProbe",
+                        "readinessProbe"
+                    ],
+                    "properties": {
+                        "livenessProbe": {
+                            "title": "The livenessProbe Schema",
+                            "type": "object",
+                            "default": {},
+                            "required": [
+                                "failureThreshold",
+                                "initialDelaySeconds",
+                                "periodSeconds",
+                                "timeoutSeconds"
+                            ],
+                            "properties": {
+                                "failureThreshold": {
+                                    "title": "The failureThreshold Schema",
+                                    "type": "integer",
+                                    "default": 3,
+                                    "minimum": 1,
+                                    "examples": [
+                                        3
+                                    ]
+                                },
+                                "initialDelaySeconds": {
+                                    "title": "The initialDelaySeconds Schema",
+                                    "type": "integer",
+                                    "default": 110,
+                                    "minimum": 0,
+                                    "examples": [
+                                        90
+                                    ]
+                                },
+                                "periodSeconds": {
+                                    "title": "The periodSeconds Schema",
+                                    "type": "integer",
+                                    "default": 10,
+                                    "minimum": 1,
+                                    "examples": [
+                                        10
+                                    ]
+                                },
+                                "timeoutSeconds": {
+                                    "title": "The timeoutSeconds Schema",
+                                    "type": "integer",
+                                    "default": 10,
+                                    "minimum": 1,
+                                    "examples": [
+                                        10
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "failureThreshold": 3,
+                                "initialDelaySeconds": 90,
+                                "periodSeconds": 10,
+                                "timeoutSeconds": 10
+                            }]
+                        },
+                        "readinessProbe": {
+                            "title": "The readinessProbe Schema",
+                            "type": "object",
+                            "default": {},
+                            "required": [
+                                "failureThreshold",
+                                "initialDelaySeconds",
+                                "periodSeconds",
+                                "timeoutSeconds"
+                            ],
+                            "properties": {
+                                "failureThreshold": {
+                                    "title": "The failureThreshold Schema",
+                                    "type": "integer",
+                                    "default": 3,
+                                    "minimum": 1,
+                                    "examples": [
+                                        3
+                                    ]
+                                },
+                                "initialDelaySeconds": {
+                                    "title": "The initialDelaySeconds Schema",
+                                    "type": "integer",
+                                    "default": 110,
+                                    "minimum": 0,
+                                    "examples": [
+                                        90
+                                    ]
+                                },
+                                "periodSeconds": {
+                                    "title": "The periodSeconds Schema",
+                                    "type": "integer",
+                                    "default": 10,
+                                    "minimum": 1,
+                                    "examples": [
+                                        10
+                                    ]
+                                },
+                                "timeoutSeconds": {
+                                    "title": "The timeoutSeconds Schema",
+                                    "type": "integer",
+                                    "default": 10,
+                                    "minimum": 1,
+                                    "examples": [
+                                        10
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "failureThreshold": 3,
+                                "initialDelaySeconds": 90,
+                                "periodSeconds": 10,
+                                "timeoutSeconds": 10
+                            }]
+                        }
+                    },
+                    "examples": [{
+                        "livenessProbe": {
+                            "failureThreshold": 3,
+                            "initialDelaySeconds": 90,
+                            "periodSeconds": 10,
+                            "timeoutSeconds": 10
+                        },
+                        "readinessProbe": {
+                            "failureThreshold": 3,
+                            "initialDelaySeconds": 90,
+                            "periodSeconds": 10,
+                            "timeoutSeconds": 10
+                        }
+                    }]
+                }
+            },
+            "examples": [{
+                "eric-oss-pm-stats-exporter": {
+                    "livenessProbe": {
+                        "failureThreshold": 3,
+                        "initialDelaySeconds": 90,
+                        "periodSeconds": 10,
+                        "timeoutSeconds": 10
+                    },
+                    "readinessProbe": {
+                        "failureThreshold": 3,
+                        "initialDelaySeconds": 90,
+                        "periodSeconds": 10,
+                        "timeoutSeconds": 10
+                    }
+                }
+            }]
+        },
+        "kafka": {
+            "title": "The kafka Schema",
+            "type": "object",
+            "default": {},
+            "required": [
+                "enabled",
+                "brokerAddress",
+                "brokerPort",
+                "brokerPortTls",
+                "schemaRegistryUrl",
+                "consumer",
+                "producer",
+                "executionReport",
+                "backup",
+                "completedTimestamp",
+                "scheduled",
+                "onDemand"
+            ],
+            "properties": {
+                "enabled": {
+                    "title": "The enabled Schema",
+                    "type": "boolean",
+                    "default": false,
+                    "examples": [
+                        false
+                    ]
+                },
+                "brokerAddress": {
+                    "title": "The brokerAddress Schema",
+                    "type": "string",
+                    "default": "eric-data-message-bus-kf",
+                    "examples": [
+                        "eric-data-message-bus-kf"
+                    ]
+                },
+                "brokerPort": {
+                    "title": "The brokerPort Schema",
+                    "type": "integer",
+                    "default": 9092,
+                    "minimum": 0,
+                    "examples": [
+                        9092
+                    ]
+                },
+                "brokerPortTls": {
+                    "title": "The brokerPortTls Schema",
+                    "type": "integer",
+                    "default": 9093,
+                    "minimum": 0,
+                    "examples": [
+                        9093
+                    ]
+                },
+                "schemaRegistryUrl": {
+                    "title": "The schemaRegistryUrl Schema",
+                    "type": "string",
+                    "default": "http://eric-schema-registry-sr:8081/",
+                    "examples": [
+                        "http://eric-schema-registry-sr:8081/"
+                    ]
+                },
+                "consumer": {
+                    "title": "The consumer Schema",
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "groupId"
+                    ],
+                    "properties": {
+                        "groupId": {
+                            "title": "The groupId Schema",
+                            "type": "string",
+                            "default": "eric-oss-pm-stats-exporter",
+                            "examples": [
+                                "eric-oss-pm-stats-exporter"
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "groupId": "eric-oss-pm-stats-exporter"
+                    }]
+                },
+                "producer": {
+                    "title": "The producer Schema",
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "avro"
+                    ],
+                    "properties": {
+                        "avro": {
+                            "title": "The avro Schema",
+                            "type": "object",
+                            "default": {},
+                            "required": [
+                                "linger",
+                                "batchSize",
+                                "compressionType"
+                            ],
+                            "properties": {
+                                "linger": {
+                                    "title": "The linger Schema",
+                                    "type": "integer",
+                                    "default": 500,
+                                    "minimum": 0,
+                                    "examples": [
+                                        500
+                                    ]
+                                },
+                                "batchSize": {
+                                    "title": "The batchSize Schema",
+                                    "type": "string",
+                                    "default": "2097152",
+                                    "examples": [
+                                        "2097152"
+                                    ]
+                                },
+                                "compressionType": {
+                                    "title": "The compressionType Schema",
+                                    "type": "string",
+                                    "default": "gzip",
+                                    "enum": ["none", "gzip", "snappy", "lz4", "zstd"],
+                                    "examples": [
+                                        "gzip"
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "linger": 500,
+                                "batchSize": "2097152",
+                                "compressionType": "gzip"
+                            }]
+                        }
+                    },
+                    "examples": [{
+                        "avro": {
+                            "linger": 500,
+                            "batchSize": "2097152",
+                            "compressionType": "gzip"
+                        }
+                    }]
+                },
+                "executionReport": {
+                    "title": "The executionReport Schema",
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "topicName"
+                    ],
+                    "properties": {
+                        "topicName": {
+                            "title": "The topicName Schema",
+                            "type": "string",
+                            "default": "pm-stats-calculator-json-execution-report",
+                            "examples": [
+                                "pm-stats-calculator-json-execution-report"
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "topicName": "pm-stats-calculator-json-execution-report"
+                    }]
+                },
+                "backup": {
+                    "title": "The backup Schema",
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "topicName",
+                        "partitions",
+                        "replicationFactor"
+                    ],
+                    "properties": {
+                        "topicName": {
+                            "title": "The topicName Schema",
+                            "type": "string",
+                            "default": "pm-stats-exporter-json-backup",
+                            "examples": [
+                                "pm-stats-exporter-json-backup"
+                            ]
+                        },
+                        "partitions": {
+                            "title": "The partitions Schema",
+                            "type": "integer",
+                            "default": 1,
+                            "minimum": 1,
+                            "examples": [
+                                1
+                            ]
+                        },
+                        "replicationFactor": {
+                            "title": "The replicationFactor Schema",
+                            "type": "integer",
+                            "default": 3,
+                            "minimum": 1,
+                            "examples": [
+                                3
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "topicName": "pm-stats-exporter-json-backup",
+                        "partitions": 1,
+                        "replicationFactor": 3
+                    }]
+                },
+                "completedTimestamp": {
+                    "title": "The completedTimestamp Schema",
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "topicName",
+                        "partitions",
+                        "replicationFactor"
+                    ],
+                    "properties": {
+                        "topicName": {
+                            "title": "The topicName Schema",
+                            "type": "string",
+                            "default": "pm-stats-exporter-json-completed-timestamp",
+                            "examples": [
+                                "pm-stats-exporter-json-completed-timestamp"
+                            ]
+                        },
+                        "partitions": {
+                            "title": "The partitions Schema",
+                            "type": "integer",
+                            "default": 10,
+                            "minimum": 1,
+                            "examples": [
+                                10
+                            ]
+                        },
+                        "replicationFactor": {
+                            "title": "The replicationFactor Schema",
+                            "type": "integer",
+                            "default": 3,
+                            "minimum": 1,
+                            "examples": [
+                                3
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "topicName": "pm-stats-exporter-json-completed-timestamp",
+                        "partitions": 10,
+                        "replicationFactor": 3
+                    }]
+                },
+                "scheduled": {
+                    "title": "The scheduled Schema",
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "topicName",
+                        "partitions",
+                        "replicationFactor"
+                    ],
+                    "properties": {
+                        "topicName": {
+                            "title": "The topicName Schema",
+                            "type": "string",
+                            "default": "pm-stats-calc-handling-avro-scheduled",
+                            "examples": [
+                                "pm-stats-calc-handling-avro-scheduled"
+                            ]
+                        },
+                        "partitions": {
+                            "title": "The partitions Schema",
+                            "type": "integer",
+                            "default": 1,
+                            "minimum": 1,
+                            "examples": [
+                                1
+                            ]
+                        },
+                        "replicationFactor": {
+                            "title": "The replicationFactor Schema",
+                            "type": "integer",
+                            "default": 3,
+                            "minimum": 1,
+                            "examples": [
+                                3
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "topicName": "pm-stats-calc-handling-avro-scheduled",
+                        "partitions": 1,
+                        "replicationFactor": 3
+                    }]
+                },
+                "onDemand": {
+                    "title": "The onDemand Schema",
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "topicName",
+                        "partitions",
+                        "replicationFactor"
+                    ],
+                    "properties": {
+                        "topicName": {
+                            "title": "The topicName Schema",
+                            "type": "string",
+                            "default": "pm-stats-calc-handling-avro-on-demand",
+                            "examples": [
+                                "pm-stats-calc-handling-avro-on-demand"
+                            ]
+                        },
+                        "partitions": {
+                            "title": "The partitions Schema",
+                            "type": "integer",
+                            "default": 1,
+                            "minimum": 1,
+                            "examples": [
+                                1
+                            ]
+                        },
+                        "replicationFactor": {
+                            "title": "The replicationFactor Schema",
+                            "type": "integer",
+                            "default": 3,
+                            "minimum": 1,
+                            "examples": [
+                                3
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "topicName": "pm-stats-calc-handling-avro-on-demand",
+                        "partitions": 1,
+                        "replicationFactor": 3
+                    }]
+                }
+            },
+            "examples": [{
+                "enabled": false,
+                "brokerAddress": "eric-data-message-bus-kf",
+                "brokerPort": 9092,
+                "brokerPortTls": 9093,
+                "schemaRegistryUrl": "http://eric-schema-registry-sr:8081/",
+                "consumer": {
+                    "groupId": "eric-oss-pm-stats-exporter"
+                },
+                "producer": {
+                    "avro": {
+                        "linger": 500,
+                        "batchSize": "2097152",
+                        "compressionType": "gzip"
+                    }
+                },
+                "executionReport": {
+                    "topicName": "pm-stats-calculator-json-execution-report"
+                },
+                "backup": {
+                    "topicName": "pm-stats-exporter-json-backup",
+                    "partitions": 1,
+                    "replicationFactor": 3
+                },
+                "completedTimestamp": {
+                    "topicName": "pm-stats-exporter-json-completed-timestamp",
+                    "partitions": 10,
+                    "replicationFactor": 3
+                },
+                "scheduled": {
+                    "topicName": "pm-stats-calc-handling-avro-scheduled",
+                    "partitions": 1,
+                    "replicationFactor": 3
+                },
+                "onDemand": {
+                    "topicName": "pm-stats-calc-handling-avro-on-demand",
+                    "partitions": 1,
+                    "replicationFactor": 3
+                }
+            }]
+        },
+        "appArmorProfile": {
+            "title": "The appArmorProfile Schema",
+            "type": "object",
+            "default": {},
+            "required": [
+                "type"
+            ],
+            "properties": {
+                "type": {
+                    "title": "The type Schema",
+                    "type": "string",
+                    "default": "",
+                    "enum": ["", "unconfined", "runtime/default", "localhost"],
+                    "examples": [
+                        ""
+                    ]
+                }
+            },
+            "examples": [{
+                "type": ""
+            }]
+        },
+        "seccompProfile": {
+            "title": "The seccompProfile Schema",
+            "type": "object",
+            "default": {},
+            "required": [
+                "type"
+            ],
+            "properties": {
+                "type": {
+                    "title": "The type Schema",
+                    "type": "string",
+                    "default": "RuntimeDefault",
+                    "enum": ["", "Unconfined", "RuntimeDefault", "Localhost"],
+                    "examples": [
+                        "RuntimeDefault"
+                    ]
+                }
+            },
+            "examples": [{
+                "type": "RuntimeDefault"
+            }]
+        },
+        "eric-pm-kpi-data": {
+            "title": "The eric-pm-kpi-data Schema",
+            "type": "object",
+            "default": {},
+            "required": [
+                "enabled",
+                "nameOverride",
+                "postgresDatabase",
+                "credentials",
+                "service"
+            ],
+            "properties": {
+                "enabled": {
+                    "title": "The enabled Schema",
+                    "type": "boolean",
+                    "default": false,
+                    "examples": [
+                        false
+                    ]
+                },
+                "nameOverride": {
+                    "title": "The nameOverride Schema",
+                    "type": "string",
+                    "default": "eric-pm-kpi-data-v2",
+                    "examples": [
+                        "eric-pm-kpi-data-v2"
+                    ]
+                },
+                "postgresDatabase": {
+                    "title": "The postgresDatabase Schema",
+                    "type": "string",
+                    "default": "kpi_service_db",
+                    "examples": [
+                        "kpi_service_db"
+                    ]
+                },
+                "credentials": {
+                    "title": "The credentials Schema",
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "roUserName",
+                        "kubernetesSecretName",
+                        "keyForUserId",
+                        "keyForUserPw",
+                        "keyForSuperPw"
+                    ],
+                    "properties": {
+                        "roUserName": {
+                            "title": "The roUserName Shema",
+                            "type": "string",
+                            "default": "kpi_service_user_ro",
+                            "examples": [
+                                "kpi_service_user_ro"
+                            ]
+                        },
+                        "kubernetesSecretName": {
+                            "title": "The kubernetesSecretName Schema",
+                            "type": "string",
+                            "default": "eric-oss-pm-stats-calculator-kpi-data",
+                            "examples": [
+                                "eric-oss-pm-stats-calculator-kpi-data"
+                            ]
+                        },
+                        "keyForUserId": {
+                            "title": "The keyForUserId Schema",
+                            "type": "string",
+                            "default": "username",
+                            "examples": [
+                                "username"
+                            ]
+                        },
+                        "keyForUserPw": {
+                            "title": "The keyForUserPw Schema",
+                            "type": "string",
+                            "default": "password",
+                            "examples": [
+                                "password"
+                            ]
+                        },
+                        "keyForSuperPw": {
+                            "title": "The keyForSuperPw Schema",
+                            "type": "string",
+                            "default": "super-pwd",
+                            "examples": [
+                                "super-pwd"
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "roUserName": "kpi_service_user_ro",
+                        "kubernetesSecretName": "eric-oss-pm-stats-calculator-kpi-data",
+                        "keyForUserId": "username",
+                        "keyForUserPw": "password",
+                        "keyForSuperPw": "super-pwd"
+                    }]
+                },
+                "service": {
+                    "title": "The service Schema",
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "port"
+                    ],
+                    "properties": {
+                        "port": {
+                            "title": "The port Schema",
+                            "type": "integer",
+                            "default": 5432,
+                            "minimum": 0,
+                            "examples": [
+                                5432
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "port": 5432
+                    }]
+                }
+            },
+            "examples": [{
+                "enabled": false,
+                "nameOverride": "eric-pm-kpi-data-v2",
+                "postgresDatabase": "kpi_service_db",
+                "credentials": {
+                    "roUserName": "kpi_service_user_ro",
+                    "kubernetesSecretName": "eric-oss-pm-stats-calculator-kpi-data",
+                    "keyForUserId": "username",
+                    "keyForUserPw": "password",
+                    "keyForSuperPw": "super-pwd"
+                },
+                "service": {
+                    "port": 5432
+                }
+            }]
+        },
+        "retry": {
+            "title": "The retry Schema",
+            "type": "object",
+            "default": {},
+            "required": [
+                "kafka",
+                "topics",
+                "postgres",
+                "sr"
+            ],
+            "properties": {
+                "kafka": {
+                    "title": "The kafka Schema",
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "backoffPeriod",
+                        "maxAttempts"
+                    ],
+                    "properties": {
+                        "backoffPeriod": {
+                            "title": "The backoffPeriod Schema",
+                            "type": "integer",
+                            "default": 5000,
+                            "minimum": 0,
+                            "examples": [
+                                5000
+                            ]
+                        },
+                        "maxAttempts": {
+                            "title": "The maxAttempts Schema",
+                            "type": "integer",
+                            "default": 5,
+                            "minimum": 0,
+                            "examples": [
+                                5
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "backoffPeriod": 5000,
+                        "maxAttempts": 5
+                    }]
+                },
+                "topics": {
+                    "title": "The topics Schema",
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "backoffPeriod",
+                        "maxAttempts"
+                    ],
+                    "properties": {
+                        "backoffPeriod": {
+                            "title": "The backoffPeriod Schema",
+                            "type": "integer",
+                            "default": 1000,
+                            "minimum": 0,
+                            "examples": [
+                                1000
+                            ]
+                        },
+                        "maxAttempts": {
+                            "title": "The maxAttempts Schema",
+                            "type": "integer",
+                            "default": 5,
+                            "minimum": 0,
+                            "examples": [
+                                5
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "backoffPeriod": 1000,
+                        "maxAttempts": 5
+                    }]
+                },
+                "postgres": {
+                    "title": "The postgres Schema",
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "backoffPeriod",
+                        "maxAttempts"
+                    ],
+                    "properties": {
+                        "backoffPeriod": {
+                            "title": "The backoffPeriod Schema",
+                            "type": "integer",
+                            "default": 5000,
+                            "minimum": 0,
+                            "examples": [
+                                5000
+                            ]
+                        },
+                        "maxAttempts": {
+                            "title": "The maxAttempts Schema",
+                            "type": "integer",
+                            "default": 5,
+                            "minimum": 0,
+                            "examples": [
+                                5
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "backoffPeriod": 5000,
+                        "maxAttempts": 5
+                    }]
+                },
+                "sr": {
+                    "title": "The sr Schema",
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "backoffPeriod",
+                        "maxAttempts"
+                    ],
+                    "properties": {
+                        "backoffPeriod": {
+                            "title": "The backoffPeriod Schema",
+                            "type": "integer",
+                            "default": 1000,
+                            "minimum": 0,
+                            "examples": [
+                                1000
+                            ]
+                        },
+                        "maxAttempts": {
+                            "title": "The maxAttempts Schema",
+                            "type": "integer",
+                            "default": 5,
+                            "minimum": 0,
+                            "examples": [
+                                5
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "backoffPeriod": 1000,
+                        "maxAttempts": 5
+                    }]
+                }
+            },
+            "examples": [{
+                "kafka": {
+                    "backoffPeriod": 5000,
+                    "maxAttempts": 5
+                },
+                "topics": {
+                    "backoffPeriod": 1000,
+                    "maxAttempts": 5
+                },
+                "postgres": {
+                    "backoffPeriod": 5000,
+                    "maxAttempts": 5
+                },
+                "sr": {
+                    "backoffPeriod": 1000,
+                    "maxAttempts": 5
+                }
+            }]
+        },
+        "dmm": {
+            "title": "The dmm Schema",
+            "type": "object",
+            "default": {},
+            "required": [
+                "enabled",
+                "dataCatalog"
+            ],
+            "properties": {
+                "enabled": {
+                    "title": "The enabled Schema",
+                    "type": "boolean",
+                    "default": false,
+                    "examples": [
+                        false
+                    ]
+                },
+                "dataCatalog": {
+                    "title": "The dataCatalog Schema",
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "nameOverride",
+                        "service"
+                    ],
+                    "properties": {
+                        "nameOverride": {
+                            "title": "The nameOverride Schema",
+                            "type": "string",
+                            "default": "eric-oss-data-catalog",
+                            "examples": [
+                                "eric-oss-data-catalog"
+                            ]
+                        },
+                        "service": {
+                            "title": "The service Schema",
+                            "type": "object",
+                            "default": {},
+                            "required": [
+                                "port"
+                            ],
+                            "properties": {
+                                "port": {
+                                    "title": "The port Schema",
+                                    "type": "integer",
+                                    "default": 9590,
+                                    "minimum": 0,
+                                    "examples": [
+                                        9590
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "port": 9590
+                            }]
+                        }
+                    },
+                    "examples": [{
+                        "nameOverride": "eric-oss-data-catalog",
+                        "service": {
+                            "port": 9590
+                        }
+                    }]
+                }
+            },
+            "examples": [{
+                "enabled": false,
+                "dataCatalog": {
+                    "nameOverride": "eric-oss-data-catalog",
+                    "service": {
+                        "port": 9590
+                    }
+                }
+            }]
+        },
+        "meterCollectors": {
+            "title": "The meterCollectors Schema",
+            "type": "object",
+            "default": {},
+            "required": [
+                "enabled",
+                "retentionSeconds"
+            ],
+            "properties": {
+                "enabled": {
+                    "title": "The enabled Schema",
+                    "type": "boolean",
+                    "default": true,
+                    "examples": [
+                        true
+                    ]
+                },
+                "retentionSeconds": {
+                    "title": "The retentionSeconds Schema",
+                    "type": "integer",
+                    "minimum": 3600,
+                    "maximum": 86400,
+                    "default": 14400,
+                    "examples": [
+                        14400
+                    ]
+                }
+            },
+            "examples": [{
+                "enabled": true,
+                "retentionSeconds": 14400
+            }]
+        },
+        "log": {
+            "title": "The log Schema",
+            "type": "object",
+            "default": {},
+            "required": ["logLevel", "logControlFile", "logstash_destination", "logstash_port", "logstash_port_tls"],
+            "properties": {
+                "streamingMethod": {
+                    "title": "The streamingMethod Schema",
+                    "type": ["null", "string"],
+                    "default": null,
+                    "enum" : [null, "indirect", "direct", "dual"],
+                    "examples": [
+                        null
+                    ]
+                },
+                "logLevel": {
+                    "title": "The logLevel Schema",
+                    "type": "string",
+                    "default": "INFO",
+                    "enum": ["ERROR", "INFO", "WARN", "DEBUG"],
+                    "examples": [
+                        "INFO"
+                    ]
+                },
+                "logControlFile": {
+                    "title": "The logControlFile Schema",
+                    "type": "string",
+                    "default": "/logcontrol/logcontrol.json",
+                    "examples": [
+                        "/logcontrol/logcontrol.json"
+                    ]
+                },
+                "logstash_destination": {
+                    "title": "The logstash_destination Schema",
+                    "type": "string",
+                    "default": "eric-log-transformer",
+                    "examples": [
+                        "eric-log-transformer"
+                    ]
+                },
+                "logstash_port": {
+                    "title": "The logstash_port Schema",
+                    "type": "integer",
+                    "default": 9080,
+                    "minimum": 0,
+                    "examples": [
+                        9080
+                    ]
+                },
+                "logstash_port_tls": {
+                    "title": "The logstash_port_tls Schema",
+                    "type": "integer",
+                    "default": 9443,
+                    "minimum": 0,
+                    "examples": [
+                        9443
+                    ]
+                }
+            },
+            "examples": [{
+                "streamingMethod": null,
+                "logLevel": "INFO",
+                "logControlFile": "/logcontrol/logcontrol.json",
+                "logstash_destination": "eric-log-transformer",
+                "logstash_port": 9080,
+                "logstash_port_tls": 9443
+            }]
+        },
+        "podSecurityContext": {
+            "title": "The podSecurityContext Schema",
+            "type": "object",
+            "default": {},
+            "required": [],
+            "properties": {
+                "supplementalGroups": {
+                    "title": "The supplementalGroups Schema",
+                    "type": ["null", "array"],
+                    "items": {
+                        "type": "integer"
+                    },
+                    "default": null,
+                    "examples": [
+                        null
+                    ]
+                }
+            },
+            "examples": [{
+                "supplementalGroups": null
+            }]
+        },
+        "securityPolicy": {
+            "title": "The securityPolicy Schema",
+            "type": "object",
+            "default": {},
+            "required": [
+                "rolename"
+            ],
+            "properties": {
+                "rolename": {
+                    "title": "The rolename Schema",
+                    "type": "string",
+                    "default": "eric-oss-pm-stats-exporter",
+                    "examples": [
+                        "eric-oss-pm-stats-exporter"
+                    ]
+                }
+            },
+            "examples": [{
+                "rolename": "eric-oss-pm-stats-exporter"
+            }]
+        },
+        "cnomServer": {
+            "title": "The cnomServer Schema",
+            "type": "object",
+            "default": {},
+            "required": [
+                "enabled"
+            ],
+            "properties": {
+                "enabled": {
+                    "title": "The enabled Schema",
+                    "type": "boolean",
+                    "default": true,
+                    "examples": [
+                        true
+                    ]
+                }
+            },
+            "examples": [{
+                "enabled": true
+            }]
+        },
+        "dst": {
+            "title": "The dst Schema",
+            "type": "object",
+            "default": {},
+            "required": [
+                "enabled",
+                "collector",
+                "producer"
+            ],
+            "properties": {
+                "enabled": {
+                    "title": "The enabled Schema",
+                    "type": "boolean",
+                    "default": true,
+                    "examples": [
+                        true
+                    ]
+                },
+                "collector": {
+                    "title": "The collector Schema",
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "host",
+                        "protocol",
+                        "portOtlpGrpc",
+                        "portOtlpHttp",
+                        "portJaegerGrpc"
+                    ],
+                    "properties": {
+                        "host": {
+                            "title": "The host Schema",
+                            "type": "string",
+                            "default": "http://eric-dst-collector",
+                            "examples": [
+                                "http://eric-dst-collector"
+                            ]
+                        },
+                        "protocol": {
+                            "title": "The protocol Schema",
+                            "type": "string",
+                            "default": "http",
+                            "enum": ["http", "grpc"],
+                            "examples": [
+                                "http"
+                            ]
+                        },
+                        "portOtlpGrpc": {
+                            "title": "The portOtlpGrpc Schema",
+                            "type": "integer",
+                            "default": 4317,
+                            "examples": [
+                                4317
+                            ]
+                        },
+                        "portOtlpHttp": {
+                            "title": "The portOtlpHttp Schema",
+                            "type": "integer",
+                            "default": 4318,
+                            "examples": [
+                                4318
+                            ]
+                        },
+                        "portJaegerGrpc": {
+                            "title": "The portJaegerGrpc Schema",
+                            "type": "integer",
+                            "default": 14250,
+                            "examples": [
+                                14250
+                            ]
+                        }
+                    },
+                    "examples": [
+                        {
+                            "host": "http://eric-dst-collector",
+                            "protocol": "http",
+                            "portOtlpGrpc": 4317,
+                            "portOtlpHttp": 4318,
+                            "portJaegerGrpc": 14250
+                        }
+                    ]
+                },
+                "producer": {
+                    "title": "The producer Schema",
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "type"
+                    ],
+                    "properties": {
+                        "type": {
+                            "title": "The type Schema",
+                            "type": "string",
+                            "default": "B3",
+                            "enum": ["B3", "W3C", "B3,W3C"],
+                            "examples": [
+                                "B3"
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "type": "B3"
+                    }]
+                }
+            },
+            "examples": [{
+                "enabled": true,
+                "collector": {
+                    "host": "http://eric-dst-collector",
+                    "protocol": "http",
+                    "portOtlpGrpc": 4317,
+                    "portOtlpHttp": 4318,
+                    "portJaegerGrpc": 14250
+                },
+                "producer": {
+                    "type": "B3"
+                }
+            }]
+        }
+    },
+    "examples": [{
+        "replicaCount": 1,
+        "podPriority": {
+            "eric-oss-pm-stats-exporter": {
+                "priorityClassName": ""
+            }
+        },
+        "podDisruptionBudget": {
+            "minAvailable": 1,
+            "maxUnavailable": ""
+        },
+        "updateStrategy": {
+            "type": "RollingUpdate",
+            "rollingUpdate": {
+                "maxSurge": 1,
+                "maxUnavailable": 0
+            }
+        },
+        "labels": {},
+        "podAnnotations": {},
+        "annotations": {},
+        "imageCredentials": {
+            "eric-oss-pm-stats-exporter": {
+                "repoPath": null,
+                "registry": {}
+            }
+        },
+        "imagePullSecrets": [],
+        "nameOverride": "",
+        "fullnameOverride": "",
+        "serviceAccount": {
+            "create": true,
+            "name": ""
+        },
+        "service": {
+            "type": "ClusterIP",
+            "port": 8080,
+            "endpoints": {
+                "chassisapi": {
+                    "tls": {
+                        "enforced": "required",
+                        "verifyClientCertificate": "required"
+                    }
+                }
+            }
+        },
+        "eric-pm-server": {
+            "rbac": {
+                "appMonitoring": {
+                    "enabled": true
+                }
+            }
+        },
+        "prometheus": {
+            "path": "/actuator/prometheus",
+            "scrape": true
+        },
+        "terminationGracePeriodSeconds": 30,
+        "resources": {
+            "eric-oss-pm-stats-exporter": {
+                "requests": {
+                    "memory": "256Mi",
+                    "cpu": "125m",
+                    "ephemeral-storage": "1Gi"
+                },
+                "limits": {
+                    "memory": "2Gi",
+                    "cpu": "500m",
+                    "ephemeral-storage": "2Gi"
+                },
+                "jvm": {
+                    "initialMemoryAllocationPercentage": 50,
+                    "smallMemoryAllocationMaxPercentage": 70,
+                    "largeMemoryAllocationMaxPercentage": 75
+                }
+            }
+        },
+        "autoScaling": {
+            "enabled": false,
+            "minReplicas": 1,
+            "maxReplicas": 100,
+            "targetCPUUtilizationPercentage": 80
+        },
+        "leaderConfigMapName": "pm-stats-exporter-leader-configmap",
+        "nodeSelector": {},
+        "topologySpreadConstraints": {
+            "deployment": [],
+            "test": []
+        },
+        "tolerations": [{
+          "key": "node.kubernetes.io/not-ready",
+          "operator": "Exists",
+          "effect": "NoExecute",
+          "tolerationSeconds": 0
+        },
+        {
+          "key": "node.kubernetes.io/unreachable",
+          "operator": "Exists",
+          "effect": "NoExecute",
+          "tolerationSeconds": 0
+        }],
+        "affinity": {
+            "podAntiAffinity": "soft",
+            "topologyKey": "kubernetes.io/hostname"
+        },
+        "probes": {
+            "eric-oss-pm-stats-exporter": {
+                "livenessProbe": {
+                    "failureThreshold": 3,
+                    "initialDelaySeconds": 90,
+                    "periodSeconds": 10,
+                    "timeoutSeconds": 10
+                },
+                "readinessProbe": {
+                    "failureThreshold": 3,
+                    "initialDelaySeconds": 90,
+                    "periodSeconds": 10,
+                    "timeoutSeconds": 10
+                }
+            }
+        },
+        "kafka": {
+            "enabled": false,
+            "brokerAddress": "eric-data-message-bus-kf",
+            "brokerPort": 9092,
+            "brokerPortTls": 9093,
+            "schemaRegistryUrl": "http://eric-schema-registry-sr:8081/",
+            "consumer": {
+                "groupId": "eric-oss-pm-stats-exporter"
+            },
+            "producer": {
+                "avro": {
+                    "linger": 500,
+                    "batchSize": "2097152",
+                    "compressionType": "gzip"
+                }
+            },
+            "executionReport": {
+                "topicName": "pm-stats-calculator-json-execution-report"
+            },
+            "backup": {
+                "topicName": "pm-stats-exporter-json-backup",
+                "partitions": 1,
+                "replicationFactor": 3
+            },
+            "completedTimestamp": {
+                "topicName": "pm-stats-exporter-json-completed-timestamp",
+                "partitions": 10,
+                "replicationFactor": 3
+            },
+            "scheduled": {
+                "topicName": "pm-stats-calc-handling-avro-scheduled",
+                "partitions": 1,
+                "replicationFactor": 3
+            },
+            "onDemand": {
+                "topicName": "pm-stats-calc-handling-avro-on-demand",
+                "partitions": 1,
+                "replicationFactor": 3
+            }
+        },
+        "appArmorProfile": {
+            "type": ""
+        },
+        "seccompProfile": {
+            "type": "RuntimeDefault"
+        },
+        "eric-pm-kpi-data": {
+            "enabled": false,
+            "nameOverride": "eric-pm-kpi-data-v2",
+            "postgresDatabase": "kpi_service_db",
+            "credentials": {
+                "roUserName": "kpi_service_user_ro",
+                "kubernetesSecretName": "eric-oss-pm-stats-calculator-kpi-data",
+                "keyForUserId": "username",
+                "keyForUserPw": "password",
+                "keyForSuperPw": "super-pwd"
+            },
+            "service": {
+                "port": 5432
+            }
+        },
+        "retry": {
+            "kafka": {
+                "backoffPeriod": 5000,
+                "maxAttempts": 5
+            },
+            "topics": {
+                "backoffPeriod": 1000,
+                "maxAttempts": 5
+            },
+            "postgres": {
+                "backoffPeriod": 5000,
+                "maxAttempts": 5
+            },
+            "sr": {
+                "backoffPeriod": 1000,
+                "maxAttempts": 5
+            }
+        },
+        "dmm": {
+            "enabled": false,
+            "dataCatalog": {
+                "nameOverride": "eric-oss-data-catalog",
+                "service": {
+                    "port": 9590
+                }
+            }
+        },
+        "meterCollectors": {
+            "enabled": true,
+            "retentionSeconds": 14400
+        },
+        "log": {
+            "streamingMethod": null,
+            "logLevel": "INFO",
+            "logControlFile": "/logcontrol/logcontrol.json",
+            "logstash_destination": "eric-log-transformer",
+            "logstash_port": 9080,
+            "logstash_port_tls": 9443
+        },
+        "podSecurityContext": {
+            "supplementalGroups": null
+        },
+        "securityPolicy": {
+            "rolename": "eric-oss-pm-stats-exporter"
+        },
+        "cnomServer": {
+            "enabled": true
+        },
+        "dst": {
+            "enabled": true,
+            "collector": {
+                "host": "http://eric-dst-collector",
+                "protocol": "http",
+                "portOtlpGrpc": 4317,
+                "portOtlpHttp": 4318,
+                "portJaegerGrpc": 14250
+            },
+            "producer": {
+                "type": "B3"
+            }
+        }
+    }]
+}

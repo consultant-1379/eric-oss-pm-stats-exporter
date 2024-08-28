@@ -1,0 +1,76 @@
+#
+# COPYRIGHT Ericsson 2024
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+modelVersion: 2.0
+fosses:
+  - product_number: CAX1053893
+    license: FAL1159004/20 Apache License 2.0 (Apache-2.0)
+    obligation: Including the full license text in a prominent place with the software
+      when the FOSS is distributed.
+    usage: A Java serialization/deserialization library to convert Java Objects into JSON and back.
+    linking: Classpath
+  - product_number: CAX1054634
+    license: FAL1159004/20 Apache License 2.0 (Apache-2.0)
+    obligation: Including the full license text in a prominent place with the software
+      when the FOSS is distributed.
+    usage: Apache Avro™ is a data serialization system.
+    linking: Classpath
+  - product_number: CAX1056250
+    license: FAL1159008 MIT License (MIT)
+    obligation: Including the full license text in a prominent place with the software
+      when the FOSS is distributed.
+    usage: Project Lombok is a java library that automatically plugs into your editor and build tools, spicing up your java.
+      Never write another getter or equals method again. Early access to future java features such as val, and much more.
+    linking: Classpath
+  - product_number: CTX1023759
+    license: FAL1159004/20 Apache License 2.0 (Apache-2.0)
+    obligation: Including the full license text in a prominent place with the software
+      when the FOSS is distributed.
+    usage: An application metrics facade for the most popular monitoring tools. Instrument your code with dimensional metrics with a vendor neutral interface and decide on the monitoring backend at the last minute.
+    linking: Classpath
+  - product_number: CAX1053104
+    license: FAL1159004/20 Apache License 2.0 (Apache-2.0)
+    obligation: Including the full license text in a prominent place with the software
+      when the FOSS is distributed.
+    usage: Spring Framework is a Java platform that provides comprehensive infrastructure support for developing Java applications.
+      Spring is modular, allowing you to use only those parts that you need, without having to bring in the rest.
+      You can use the IoC container, with Struts on top, but you can also use only the Hibernate integration code or the JDBC abstraction layer.
+      The Spring Framework supports declarative transaction management, remote access to your logic through RMI or web services, and various options for persisting your data.
+      It offers a full-featured MVC framework, and enables you to integrate AOP transparently into your software.
+    linking: Classpath
+  - product_number: CAX1053319
+    license: FAL1159003/1 BSD 2-Clause "Simplified" License (BSD-2-Clause)
+    obligation: Including the full license text in a prominent place with the software
+      when the FOSS is distributed.
+    usage: JDBC Driver allows Java programs to connect to a PostgreSQL database using standard, database independent Java code.
+    linking: Classpath
+  - product_number: CTX1020156
+    license: FAL1159004/20 Apache License 2.0 (Apache-2.0)
+    obligation: Including the full license text in a prominent place with the software
+      when the FOSS is distributed.
+    usage: Spring for Apache Kafka.
+    linking: Classpath
+  - product_number: CAX1056595
+    license: FAL1159004/20 Apache License 2.0 (Apache-2.0)
+    obligation: Including the full license text in a prominent place with the software
+      when the FOSS is distributed.
+    usage: Spring Retry provides an abstraction around retrying failed operations, with an emphasis on declarative control of the process and policy-based behaviour that is easy to extend and customize. For instance, you can configure a plain POJO operation to retry if it fails, based on the type of exception, and with a fixed or exponential backoff.
+    linking: Classpath
+  - product_number: CTX1022185
+    license: FAL1159004/20 (Apache License 2.0 (Apache-2.0)
+    obligation: Including the full license text in a prominent place with the software
+      when the FOSS is distributed.
+    usage: Kubernetes integration with Spring Cloud Discovery Client, Configuration, etc...
+    linking: Classpath

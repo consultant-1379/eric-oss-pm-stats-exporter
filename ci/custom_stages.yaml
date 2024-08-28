@@ -1,0 +1,6 @@
+stage-marker-init:
+  - name: lint.Jenkinsfile
+stage-marker-helm-post:
+  - name: k8s.Jenkinsfile
+stage-marker-eridoc:
+  - name: publish.Jenkinsfile
